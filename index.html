@@ -86,7 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#define MAXSIZE 10                 //最大存储单元数<br>typedef int keytype;<br>typedef keytype HTable[MAXSIZE];</p>
+        <h2 id="散列表查找操作"><a href="#散列表查找操作" class="headerlink" title="散列表查找操作"></a>散列表查找操作</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#define MAXSIZE 10                 //最大存储单元数<br>typedef int keytype;<br>typedef keytype HTable[MAXSIZE];</p>
 <p>void creatHT(HTable HT,int m,int p)<br>{<br>    int i,n=0;                     //n记录散列表中的元素个数<br>    keytype x;                     //x存放关键字<br>    printf(“请输入关键字(-999为结束输入数，最大存储单元为10)：\n”);<br>    scanf(“%d”,&amp;x);<br>    while(x!=-999&amp;&amp;i&lt;MAXSIZE+1)<br>    {<br>        n++;<br>        if(n&gt;m) break;<br>        i=x%p;<br>        while(HT[i]!=-999)           //判断是否有冲突,有则进行线性探测<br>        i=(++i)%m;<br>        HT[i]=x;<br>        scanf(“%d”,&amp;x);<br>    }<br>}</p>
 <p>void display(HTable HT,int m)<br>{<br>    int i,j=0;<br>    for(i=0;i&lt;MAXSIZE;i++)           //先输出地址便于查看<br>    {<br>        if(i==0)<br>        printf(“  地址：”);<br>        printf(“%4d”,i);<br>    }<br>    printf(“\n”);<br>    for(i=0;i&lt;MAXSIZE;i++)           //输出关键字<br>    {<br>        if(i==0)<br>        printf(“关键字：”);<br>        if(HT[i]!=-999)<br>        {<br>            printf(“%4d”,HT[i]);<br>            j++;<br>        }<br>        else<br>        printf(“    “);<br>        if(j==m)<br>        break;<br>    }<br>    printf(“\n”);<br>}</p>
 <p>void search(HTable HT,int m,int p)<br>{<br>     int i,j,x,s=0;<br>     printf(“请输入想要查找的关键字：\n”);<br>     scanf(“%d”,&amp;x);<br>     i=x%p;<br>     j=i;<br>     while(HT[j]!=-999)<br>     {<br>         if(HT[j]==x)<br>        {<br>            printf(“关键字已找到，在数组中的下标为%d\n”,j);<br>            s++;<br>        }                                        //找到后输出j<br>        j=(j+1)%m;<br>        if(j==i) break;                         //没找到退出循环<br>    }<br>    if(s==0)<br>    printf(“表中没有该关键字！\n”);<br>}</p>
@@ -99,11 +99,14 @@
 <p>int main(void)<br>{<br>    int m;<br>    printf(“请先创建哈希表：\n”);<br>    printf(“请输入关键字长度：\n”);<br>    scanf(“%d”,&amp;m);<br>    slink *h[m];<br>    creat(h,m,m);<br>    display(h,m);<br>    search(h,m);<br>    return 0;<br>}</p>
 <hr>
 <p>实验内容<br>1．闭散列表（也称开地址方法）查找的实现<br>2．开散列表（也称拉链法）查找的实现</p>
+<hr>
+<p>1：该实验的目的为“闭散列表（也称开地址方法）查找的实现”，所以我选择建立一个数组来保<br>存关键字，散列函数构造用了除留余数法，并设置表长与除数一致，其中又选择了线性探测再散<br>列的方法解决冲突。<br>2：该实验的目的为散列表（也称拉链法）查找的实现，在实验中我曾定义了一个结构体指针变<br>量传给结构体指针数组，导致溢出，编译和结果没问题但是出现return value 3221225477，<br>更改之后一切正常了。</p>
+<hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/19/The-First-blog/" data-id="ckggiwrkp00000s8x0syhfdsa" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/19/The-First-blog/" data-id="ckgglqc1o0000m88xeak83vp3" class="article-share-link">Share</a>
       
       
     </footer>
