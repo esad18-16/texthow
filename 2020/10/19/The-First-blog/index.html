@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="散列表查找操作#include&amp;lt;stdio.h&amp;gt;#include&amp;lt;stdlib.h&amp;gt;#define MAXSIZE 10                 //最大存储单元数typedef int keytype;typedef keytype HTable[MAXSIZE];">
+        <meta name="description" content="散列表查找操作">
     
 
     <!--Author-->
@@ -170,7 +170,8 @@
         
 
         <!-- Post Content -->
-        <h2 id="散列表查找操作"><a href="#散列表查找操作" class="headerlink" title="散列表查找操作"></a>散列表查找操作</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#define MAXSIZE 10                 //最大存储单元数<br>typedef int keytype;<br>typedef keytype HTable[MAXSIZE];</p>
+        <h2 id="散列表查找操作"><a href="#散列表查找操作" class="headerlink" title="散列表查找操作"></a>散列表查找操作</h2><a id="more"></a>
+<p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#define MAXSIZE 10                 //最大存储单元数<br>typedef int keytype;<br>typedef keytype HTable[MAXSIZE];</p>
 <p>void creatHT(HTable HT,int m,int p)<br>{<br>    int i,n=0;                     //n记录散列表中的元素个数<br>    keytype x;                     //x存放关键字<br>    printf(“请输入关键字(-999为结束输入数，最大存储单元为10)：\n”);<br>    scanf(“%d”,&amp;x);<br>    while(x!=-999&amp;&amp;i&lt;MAXSIZE+1)<br>    {<br>        n++;<br>        if(n&gt;m) break;<br>        i=x%p;<br>        while(HT[i]!=-999)           //判断是否有冲突,有则进行线性探测<br>        i=(++i)%m;<br>        HT[i]=x;<br>        scanf(“%d”,&amp;x);<br>    }<br>}</p>
 <p>void display(HTable HT,int m)<br>{<br>    int i,j=0;<br>    for(i=0;i&lt;MAXSIZE;i++)           //先输出地址便于查看<br>    {<br>        if(i==0)<br>        printf(“  地址：”);<br>        printf(“%4d”,i);<br>    }<br>    printf(“\n”);<br>    for(i=0;i&lt;MAXSIZE;i++)           //输出关键字<br>    {<br>        if(i==0)<br>        printf(“关键字：”);<br>        if(HT[i]!=-999)<br>        {<br>            printf(“%4d”,HT[i]);<br>            j++;<br>        }<br>        else<br>        printf(“    “);<br>        if(j==m)<br>        break;<br>    }<br>    printf(“\n”);<br>}</p>
 <p>void search(HTable HT,int m,int p)<br>{<br>     int i,j,x,s=0;<br>     printf(“请输入想要查找的关键字：\n”);<br>     scanf(“%d”,&amp;x);<br>     i=x%p;<br>     j=i;<br>     while(HT[j]!=-999)<br>     {<br>         if(HT[j]==x)<br>        {<br>            printf(“关键字已找到，在数组中的下标为%d\n”,j);<br>            s++;<br>        }                                        //找到后输出j<br>        j=(j+1)%m;<br>        if(j==i) break;                         //没找到退出循环<br>    }<br>    if(s==0)<br>    printf(“表中没有该关键字！\n”);<br>}</p>
@@ -221,10 +222,6 @@
     <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
         <h2>Recent Posts</h2>
         <ul>
-            
-            <li>
-                <a class="footer-post" href="/texthow/2020/10/26/%E2%80%9Cdjanskdad/">“djanskdad</a>
-            </li>
             
             <li>
                 <a class="footer-post" href="/texthow/2020/10/26/%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/">题目记录</a>

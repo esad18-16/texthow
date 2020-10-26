@@ -152,32 +152,6 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/texthow/2020/10/26/%E2%80%9Cdjanskdad/">
-                “djanskdad
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-10-26</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
             <a href="/texthow/2020/10/26/%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/">
                 题目记录
             </a>
@@ -195,7 +169,13 @@
         <div class="content">
             <p>题目描述<br>       输入一个int型的正整数，计算出该int型数据在内存中存储时1的个数。</p>
 <p>输入描述:<br>       输入一个整数（int类型）</p>
-<p>输出描述:<br>        这个数转换成2进制后，输出1的个数<br>示例1<br>输入<br>6<br>输出<br>2<br>代码实现如下：<br>#include &lt;stdio.h&gt;<br>int main(void)<br>{<br>    int data;<br>    int count=0;<br>    scanf(“%d”,&amp;data);<br>    while(data)<br>    {<br>        count ++;<br>        data=data&amp;(data-1);<br>    }<br>    printf(“%d”, count);<br>    return 0;<br>}<br>思路：初始只考虑了将输入数转换为二进制数存入数组，再一一检查数组中1的个数，既耗内存又耗时间。后来在网上查找其他解决方<br>法，才知道位运算可以轻松解决这个问题。</p>
+<p>输出描述:<br>        这个数转换成2进制后，输出1的个数<br>示例1<br>输入<br>6<br>输出<br>2<br>代码实现如下：</p>
+<p>#include &lt;stdio.h&gt;<br>int main(void)<br>{<br>    int data;<br>    int count=0;<br>    scanf(“%d”,&amp;data);<br>    while(data)<br>    {<br>        count ++;<br>        data=data&amp;(data-1);<br>    }<br>    printf(“%d”, count);<br>    return 0;<br>} </p>
+<p>思路：初始只考虑了将输入数转换为二进制数存入数组，再一一检查数组中1的个数，既耗内存又耗时间。后来在网上查找其他解决方<br>法，才知道位运算可以轻松解决这个问题。</p>
+<p>实现文件读写操作<br>文件写入后需要用rewind()函数使文件指针回到文件开头，不然后续的读入操作将会受影响。</p>
+<p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>int main(void)<br>{<br>    FILE *fp;<br>    int num;<br>    int i;<br>    fp=fopen(“D:\testfile.txt”,”wb+”);<br>    if(fp==NULL)<br>    {<br>        system(“color 2C”);<br>        printf(“Error!!!\n”);<br>    }<br>    else<br>    {<br>        for(i=0;i&lt;5;i++)<br>        {<br>        scanf(“%d”,&amp;num);<br>        fprintf(fp,”%4d”,num);<br>        }<br>    }<br>    int s=0;<br>    rewind(fp);<br>    for(i=0;i&lt;5;i++)<br>    {<br>    if(1==fscanf(fp,”%d”,&amp;s))<br>    printf(“%4d”,s);<br>    else<br>    {<br>        system(“color 47”);<br>        printf(“Error!!!\n”);<br>    }<br>    }<br>    return 0;<br> }</p>
+<p>蓝桥杯b组2、3题：<br>2既约分数:<br>#include&lt;stdio.h&gt;<br>int gongyue(int a,int b)<br>{<br>    int i,min;<br>    if(a&gt;b)<br>    min=b;<br>    else<br>    min=a;<br>    for(i=min;i&gt;0;i–)<br>    {<br>        if((a%i==0)&amp;&amp;(b%i==0))<br>        break;<br>    }<br>    return i;<br>}<br>int main(void)<br>{<br>    int i=1;<br>    int num=0;<br>    for(;i&lt;=2020;i++)<br>        {<br>            int j=1;<br>            for(;j&lt;=2020;j++)<br>            {<br>                if(gongyue(i,j)==1)<br>                num++;<br>            }<br>        }<br>        printf(“%d”,num);<br>    return 0;<br>}</p>
+<p>3蛇形填数:<br>#include&lt;stdio.h&gt;<br>int main(void)<br>{<br>    int i=1;<br>    int j=0;<br>    int a[50][50];<br>    a[0][0]=1;<br>    a[0][1]=2;<br>    a[1][0]=3;<br>    for(int num=3;num&lt;50*25;)<br>    {<br>        if(i==0&amp;&amp;j!=0)<br>        {<br>            a[i][j+1]=a[i][j]+1;<br>            j++;<br>            num++;<br>        }<br>        if(j==0&amp;&amp;i!=0)<br>        {<br>            a[i+1][j]=a[i][j]+1;<br>            i++;<br>            num++;<br>        }<br>        if(i!=0&amp;&amp;j==0)<br>        {<br>            while(i!=0)<br>            {<br>                a[i-1][j+1]=a[i][j]+1;<br>                i–;<br>                j++;<br>                num++;<br>            }<br>            continue;<br>        }<br>        if(i==0&amp;&amp;j!=0)<br>        {<br>            while(j!=0)<br>            {<br>                a[i+1][j-1]=a[i][j]+1;<br>                i++;<br>                j–;<br>                num++;<br>            }<br>            continue;<br>            }<br>    }<br>    printf(“%d\n”,a[19][19]);<br>    return 0;<br>}</p>
 
         </div>
     
@@ -222,24 +202,9 @@
 
     
         <div class="content">
-            <h2 id="散列表查找操作"><a href="#散列表查找操作" class="headerlink" title="散列表查找操作"></a>散列表查找操作</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#define MAXSIZE 10                 //最大存储单元数<br>typedef int keytype;<br>typedef keytype HTable[MAXSIZE];</p>
-<p>void creatHT(HTable HT,int m,int p)<br>{<br>    int i,n=0;                     //n记录散列表中的元素个数<br>    keytype x;                     //x存放关键字<br>    printf(“请输入关键字(-999为结束输入数，最大存储单元为10)：\n”);<br>    scanf(“%d”,&amp;x);<br>    while(x!=-999&amp;&amp;i&lt;MAXSIZE+1)<br>    {<br>        n++;<br>        if(n&gt;m) break;<br>        i=x%p;<br>        while(HT[i]!=-999)           //判断是否有冲突,有则进行线性探测<br>        i=(++i)%m;<br>        HT[i]=x;<br>        scanf(“%d”,&amp;x);<br>    }<br>}</p>
-<p>void display(HTable HT,int m)<br>{<br>    int i,j=0;<br>    for(i=0;i&lt;MAXSIZE;i++)           //先输出地址便于查看<br>    {<br>        if(i==0)<br>        printf(“  地址：”);<br>        printf(“%4d”,i);<br>    }<br>    printf(“\n”);<br>    for(i=0;i&lt;MAXSIZE;i++)           //输出关键字<br>    {<br>        if(i==0)<br>        printf(“关键字：”);<br>        if(HT[i]!=-999)<br>        {<br>            printf(“%4d”,HT[i]);<br>            j++;<br>        }<br>        else<br>        printf(“    “);<br>        if(j==m)<br>        break;<br>    }<br>    printf(“\n”);<br>}</p>
-<p>void search(HTable HT,int m,int p)<br>{<br>     int i,j,x,s=0;<br>     printf(“请输入想要查找的关键字：\n”);<br>     scanf(“%d”,&amp;x);<br>     i=x%p;<br>     j=i;<br>     while(HT[j]!=-999)<br>     {<br>         if(HT[j]==x)<br>        {<br>            printf(“关键字已找到，在数组中的下标为%d\n”,j);<br>            s++;<br>        }                                        //找到后输出j<br>        j=(j+1)%m;<br>        if(j==i) break;                         //没找到退出循环<br>    }<br>    if(s==0)<br>    printf(“表中没有该关键字！\n”);<br>}</p>
-<p>int main(void)<br>{<br>    HTable HT;<br>    int i;<br>    printf(“请先创建哈希表：\n”);<br>    for(i=0;i&lt;MAXSIZE;i++)               //初始化散列表<br>    HT[i]=-999;<br>    creatHT(HT,MAXSIZE,MAXSIZE);<br>    display(HT,MAXSIZE);<br>    search(HT,MAXSIZE,MAXSIZE);<br>    return 0;<br>} </p>
-<p>四、2：<br>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>typedef int key;<br>typedef struct node<br>{<br>    key data;                             //存放关键字<br>    struct node *next;<br>}slink;</p>
-<p>void creat(slink *h[],int m,int p)        //m为表长，p为除数<br>{<br>    int i;<br>    key x;<br>    slink *s;<br>    for(i=0;i&lt;m;i++)                      //初始化<br>    h[i]=NULL;<br>    printf(“请输入关键字(-999为结束输入数)：\n”);<br>    scanf(“%d”,&amp;x);<br>    while(x!=-999)<br>    {<br>        i=x%p;<br>        s=(slink *)malloc(sizeof(slink));<br>        s-&gt;data=x;<br>        s-&gt;next=h[i];                      //首插法<br>        h[i]=s;<br>        scanf(“%d”,&amp;x);<br>    }</p>
-<p>} </p>
-<p>void display(slink *h[],int m)<br>{<br>    int i;<br>    slink *s;<br>    printf(“地址  关键字\n”);            //控制输出格式便于观看<br>    for(i=0;i&lt;m;i++)<br>    {<br>        printf(“%-4d    “,i);<br>        s=h[i];<br>        for(;s;s=s-&gt;next)<br>        printf(“%-4d”,s-&gt;data);<br>        printf(“\n”);<br>    }<br>}</p>
-<p>void search(slink *h[],int p)<br>{<br>    slink *q;<br>    int i,j=0;<br>    key x;<br>    printf(“请输入想要查找的关键字：\n”);<br>     scanf(“%d”,&amp;x);<br>    i=x%p;<br>    q=h[i];<br>    while(q)<br>    {<br>        if(q-&gt;data==x)<br>        {<br>            printf(“关键字已找到,在下标为%d的链表中\n”,i);<br>            j++;<br>            break;<br>        }<br>        q=q-&gt;next;<br>    }<br>    if(j==0)<br>    {<br>        printf(“未找到！！！\n”);<br>    }<br>}</p>
-<p>int main(void)<br>{<br>    int m;<br>    printf(“请先创建哈希表：\n”);<br>    printf(“请输入关键字长度：\n”);<br>    scanf(“%d”,&amp;m);<br>    slink *h[m];<br>    creat(h,m,m);<br>    display(h,m);<br>    search(h,m);<br>    return 0;<br>}</p>
-<hr>
-<p>实验内容<br>1．闭散列表（也称开地址方法）查找的实现<br>2．开散列表（也称拉链法）查找的实现</p>
-<hr>
-<p>1：该实验的目的为“闭散列表（也称开地址方法）查找的实现”，所以我选择建立一个数组来保<br>存关键字，散列函数构造用了除留余数法，并设置表长与除数一致，其中又选择了线性探测再散<br>列的方法解决冲突。<br>2：该实验的目的为散列表（也称拉链法）查找的实现，在实验中我曾定义了一个结构体指针变<br>量传给结构体指针数组，导致溢出，编译和结果没问题但是出现return value 3221225477，<br>更改之后一切正常了。</p>
-<hr>
-
+            <h2 id="散列表查找操作"><a href="#散列表查找操作" class="headerlink" title="散列表查找操作"></a>散列表查找操作</h2>
         </div>
+        <a href="/texthow/2020/10/19/The-First-blog/" class="read-more">Read More</a>
     
 
 </div>
@@ -271,10 +236,6 @@
     <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
         <h2>Recent Posts</h2>
         <ul>
-            
-            <li>
-                <a class="footer-post" href="/texthow/2020/10/26/%E2%80%9Cdjanskdad/">“djanskdad</a>
-            </li>
             
             <li>
                 <a class="footer-post" href="/texthow/2020/10/26/%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/">题目记录</a>
