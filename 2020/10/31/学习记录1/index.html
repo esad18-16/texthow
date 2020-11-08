@@ -10,27 +10,24 @@
 
     <!--Description-->
     
-        <meta name="description" content="题目描述       输入一个int型的正整数，计算出该int型数据在内存中存储时1的个数。
-输入描述:       输入一个整数（int类型）
-输出描述:        这个数转换成2进制后，输出1的个数示例1输入6输出2代码实现如下：
-#include &amp;lt;stdio.h&amp;gt;int ma">
+        <meta name="description" content="无符号数（unsigned）在C语言中，如果一个运算包含一个有符号数和一个无符号数，那么C语言会隐式地将有符号数转换为无符号数，这对于标准的算术运算没什么问题，但是对于 &amp;lt; 和 &amp;gt; 这样的关系运算符来说，它会出现不是预料中的结果。#include &amp;lt;stdio.h&amp;gt;int m">
     
 
     <!--Author-->
     
-        <meta name="author" content="John Doe">
+        <meta name="author" content="Quan">
     
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="题目记录"/>
+        <meta property="og:title" content="学习记录"/>
     
 
     <!--Open Graph Description-->
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Hexo"/>
+    <meta property="og:site_name" content="E18-16"/>
 
     <!--Type page-->
     
@@ -48,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>题目记录 - Hexo</title>
+    <title>学习记录 - E18-16</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -154,13 +151,13 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/texthow/2020/10/26/%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/">
-                题目记录
+            <a href="/texthow/2020/10/31/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951/">
+                学习记录
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2020-10-26</span>
+                <span class="date">2020-10-31</span>
             
             
             
@@ -173,15 +170,53 @@
         
 
         <!-- Post Content -->
-        <p>题目描述<br>       输入一个int型的正整数，计算出该int型数据在内存中存储时1的个数。</p>
-<p>输入描述:<br>       输入一个整数（int类型）</p>
-<p>输出描述:<br>        这个数转换成2进制后，输出1的个数<br>示例1<br>输入<br>6<br>输出<br>2<br>代码实现如下：</p>
-<p>#include &lt;stdio.h&gt;<br>int main(void)<br>{<br>    int data;<br>    int count=0;<br>    scanf(“%d”,&amp;data);<br>    while(data)<br>    {<br>        count ++;<br>        data=data&amp;(data-1);<br>    }<br>    printf(“%d”, count);<br>    return 0;<br>} </p>
-<p>思路：初始只考虑了将输入数转换为二进制数存入数组，再一一检查数组中1的个数，既耗内存又耗时间。后来在网上查找其他解决方<br>法，才知道位运算可以轻松解决这个问题。</p>
-<p>实现文件读写操作<br>文件写入后需要用rewind()函数使文件指针回到文件开头，不然后续的读入操作将会受影响。</p>
-<p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>int main(void)<br>{<br>    FILE *fp;<br>    int num;<br>    int i;<br>    fp=fopen(“D:\testfile.txt”,”wb+”);<br>    if(fp==NULL)<br>    {<br>        system(“color 2C”);<br>        printf(“Error!!!\n”);<br>    }<br>    else<br>    {<br>        for(i=0;i&lt;5;i++)<br>        {<br>        scanf(“%d”,&amp;num);<br>        fprintf(fp,”%4d”,num);<br>        }<br>    }<br>    int s=0;<br>    rewind(fp);<br>    for(i=0;i&lt;5;i++)<br>    {<br>    if(1==fscanf(fp,”%d”,&amp;s))<br>    printf(“%4d”,s);<br>    else<br>    {<br>        system(“color 47”);<br>        printf(“Error!!!\n”);<br>    }<br>    }<br>    return 0;<br> }</p>
-<p>蓝桥杯b组2、3题：<br>2既约分数:<br>#include&lt;stdio.h&gt;<br>int gongyue(int a,int b)<br>{<br>    int i,min;<br>    if(a&gt;b)<br>    min=b;<br>    else<br>    min=a;<br>    for(i=min;i&gt;0;i–)<br>    {<br>        if((a%i==0)&amp;&amp;(b%i==0))<br>        break;<br>    }<br>    return i;<br>}<br>int main(void)<br>{<br>    int i=1;<br>    int num=0;<br>    for(;i&lt;=2020;i++)<br>        {<br>            int j=1;<br>            for(;j&lt;=2020;j++)<br>            {<br>                if(gongyue(i,j)==1)<br>                num++;<br>            }<br>        }<br>        printf(“%d”,num);<br>    return 0;<br>}</p>
-<p>3蛇形填数:<br>#include&lt;stdio.h&gt;<br>int main(void)<br>{<br>    int i=1;<br>    int j=0;<br>    int a[50][50];<br>    a[0][0]=1;<br>    a[0][1]=2;<br>    a[1][0]=3;<br>    for(int num=3;num&lt;50*25;)<br>    {<br>        if(i==0&amp;&amp;j!=0)<br>        {<br>            a[i][j+1]=a[i][j]+1;<br>            j++;<br>            num++;<br>        }<br>        if(j==0&amp;&amp;i!=0)<br>        {<br>            a[i+1][j]=a[i][j]+1;<br>            i++;<br>            num++;<br>        }<br>        if(i!=0&amp;&amp;j==0)<br>        {<br>            while(i!=0)<br>            {<br>                a[i-1][j+1]=a[i][j]+1;<br>                i–;<br>                j++;<br>                num++;<br>            }<br>            continue;<br>        }<br>        if(i==0&amp;&amp;j!=0)<br>        {<br>            while(j!=0)<br>            {<br>                a[i+1][j-1]=a[i][j]+1;<br>                i++;<br>                j–;<br>                num++;<br>            }<br>            continue;<br>            }<br>    }<br>    printf(“%d\n”,a[19][19]);<br>    return 0;<br>}</p>
+        <p>无符号数（unsigned）<br>在C语言中，如果一个运算包含一个有符号数和一个无符号数，那么C语言会隐式地将有符号数转换为无符号数，这对于标准的算术运算没什么问题，但是对于 &lt; 和 &gt; 这样的关系运算符来说，它会出现不是预料中的结果。<br>#include &lt;stdio.h&gt;<br>int main(void)<br>{<br>    unsigned int a=6;<br>    int b=-20;<br>    (a+b&gt;6)?puts(“&gt;6”):puts(“&lt;=6”);<br>    printf(“%d\n%d”,(a+b&gt;6),a+b);<br>    return 0;<br>}<br>运行结果：</p>
+<blockquote>
+<p>6<br>1<br>-14</p>
+</blockquote>
+<p>ACM003：<br>                        查找缺失的元素<br>描述：给定一个数组，找到其中的最大值n,输出[0,n]，在该数组中缺失的元素。<br>输入：输入任意个自然数，当输入为-1时，结束输入。<br>输出：输出缺失的元素，每两个元素之间用空格分隔。<br>输入样例1                       输出样例1<br>0 1 4 -1                       2 3</p>
+<p>当时的想法是直接对比每一个元素与其下标值，小则输出下标，没有如题目要求找最大值，再输出缺失元素。后再思考题目后，决定先找最大值，然后另设一个数组初始值为其对应下标，再将前一数组排序，一一对比，输出缺失元素。<br>#include&lt;stdio.h&gt;<br>int main(void)<br>{<br>    int i;<br>    int a[10000]={0};<br>    for(i=0;i&lt;10000&amp;&amp;a[i-1]!=-1;i++)     //数组存储数，以-1为判定条件结束输入<br>    {<br>        scanf(“%d”,&amp;a[i]);<br>    }<br>    int num=i;<br>    int j,s;<br>    for(i=0;i&lt;num;i++)                   //找出数组中的最大值<br>    {<br>        for(j=i+1;j&lt;num;j++)<br>        {<br>            if(a[i]&lt;a[j]) s=a[j];<br>        }<br>    }<br>    int z[s+1];                          //另设一个数组，长度为a[]的最大值并初始化值为对应下标<br>    for(j=0;j&lt;=s;j++)<br>    z[j]=j;<br>    int e;<br>    for(i=0;i&lt;num;i++)                     //将最大值前的数（冒泡）排序便于下一步排序<br>    {<br>        for(j=i+1;j&lt;num;j++)<br>        {<br>            if(a[i]&gt;a[j])<br>            {<br>                e=a[i];<br>                a[i]=a[j];<br>                a[j]=e;<br>            }<br>        }<br>    }<br>    j=0;<br>    int x;<br>    for(i=0;i&lt;=num;i++)                  //输出a数组关于0-最大值缺失的元素<br>    {<br>        x=0;<br>        for(;j&lt;=s;j++)<br>        {<br>            if(a[i]&gt;z[j])<br>            {<br>                printf(“%d “,z[j]);<br>                x++;<br>            }<br>            else<br>            break;<br>        }<br>        if(x!=0||j==0)                   //测试发现0需要特殊对待<br>        j++;<br>    }<br>    return 0;<br> } </p>
+<p>java:list、set、map的简单应用：</p>
+
+public static void testlist() {
+//	List<String> sa=Arrays.asList("11","07","18","16");   //初始化使用Arrays.asList(无法增减否则报错)
+		List<String> sa=new ArrayList<String>() {{
+			add("11");				//双括号大法好！就是效率会有损失，将list返回给其他地方使用时可能内存会有泄露
+			add("07");
+			add("18");
+			add("16");
+		}};
+		System.out.println(sa);
+		sa.add(1,"20");                    //在sa[1]中加入元素20，元素后移
+		System.out.println(sa);
+		sa.remove(2);						//删除sa[2]
+		System.out.println(sa);
+	}
+public static void testmap() {
+		Map<Integer,String> m=new HashMap<Integer,String>(){{
+		put(1, "esd");
+		put(2, "esa");						//双括号{{}}初始化hashmap
+		put(3, "rsf");
+		}};
+		System.out.println(m);
+		System.out.println(m.containsKey(2)); 			//输出键为2的值
+		System.out.println(m.containsValue("rsf"));		//输出值为rsf的键
+	}
+public static void testset() {
+		
+		String[] shuzu=new String[10];					//初始化数组
+		for(int i=0;i<10;i++)
+		{
+			shuzu[i]= (""+Math.round(Math.random()*5));
+		}
+		for(String temp: shuzu)
+		System.out.print(temp+" ");
+		System.out.println();
+		List aaa=Arrays.asList(shuzu);					//将数组转化为list集合
+		System.out.println(aaa);
+		Set<Integer> set=new HashSet<Integer>(aaa);		//将list转化为set集合对非重复元素进行筛选
+		System.out.println(set);
+	}
 
     </div>
 
@@ -219,7 +254,11 @@
         <ul>
             
             <li>
-                <a class="footer-post" href="/texthow/2020/10/26/%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/">题目记录</a>
+                <a class="footer-post" href="/texthow/2020/10/31/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951/">学习记录</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/texthow/2020/10/26/%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%951/">题目记录</a>
             </li>
             
             <li>
