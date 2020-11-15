@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>题目记录 | E18-16</title>
+    <title>学习记录2 | E18-16</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Quan">
     
 
     
-    <meta name="description" content="题目描述       输入一个int型的正整数，计算出该int型数据在内存中存储时1的个数。 输入描述:       输入一个整数（int类型） 输出描述:        这个数转换成2进制后，输出1的个数示例1输入6输出2">
+    <meta name="description" content="位、字节、字（bits, Bytes, words）是计算机数据存储的单位。位是最小的存储单位，每一个位存储一个1位的二进制码，一个字节由8位组成。而字通常为16、32或64个位组成。 Java：类型     byte    short    char    int    float    long    double所占字节  1           2       2      4">
 <meta property="og:type" content="article">
-<meta property="og:title" content="题目记录">
-<meta property="og:url" content="https://gitee.com/e18-16/texthow/2020/10/26/%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%951/index.html">
+<meta property="og:title" content="学习记录2">
+<meta property="og:url" content="https://gitee.com/e18-16/texthow/2020/11/15/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/index.html">
 <meta property="og:site_name" content="E18-16">
-<meta property="og:description" content="题目描述       输入一个int型的正整数，计算出该int型数据在内存中存储时1的个数。 输入描述:       输入一个整数（int类型） 输出描述:        这个数转换成2进制后，输出1的个数示例1输入6输出2">
+<meta property="og:description" content="位、字节、字（bits, Bytes, words）是计算机数据存储的单位。位是最小的存储单位，每一个位存储一个1位的二进制码，一个字节由8位组成。而字通常为16、32或64个位组成。 Java：类型     byte    short    char    int    float    long    double所占字节  1           2       2      4">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-26T00:38:38.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:59:58.168Z">
+<meta property="article:published_time" content="2020-11-15T09:49:44.000Z">
+<meta property="article:modified_time" content="2020-11-15T09:58:55.111Z">
 <meta property="article:author" content="Quan">
 <meta name="twitter:card" content="summary">
 
@@ -35,8 +35,6 @@
     
     
 <link rel="stylesheet" href="/texthow/css/style.css">
-<link rel="stylesheet" href="/texthow/%02.css">
-<link rel="stylesheet" href="/texthow/.css">
 
 <meta name="generator" content="Hexo 5.2.0"></head>
 
@@ -85,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/texthow/2020/10/26/题目记录1/" title="题目记录" itemprop="url">题目记录</a>
+      <a href="/texthow/2020/11/15/学习记录2/" title="学习记录2" itemprop="url">学习记录2</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
 		
   <p class="article-time">
-    <time datetime="2020-10-26T00:38:38.000Z" itemprop="datePublished"> Published 2020-10-26</time>
+    <time datetime="2020-11-15T09:49:44.000Z" itemprop="datePublished"> Published 2020-11-15</time>
     
   </p>
 </header>
@@ -105,17 +103,31 @@
 		
 		</div>
 		
-		<p>题目描述<br>       输入一个int型的正整数，计算出该int型数据在内存中存储时1的个数。</p>
-<p>输入描述:<br>       输入一个整数（int类型）</p>
-<p>输出描述:<br>        这个数转换成2进制后，输出1的个数<br>示例1<br>输入<br>6<br>输出<br>2</p>
-<a id="more"></a>
-<p>代码实现如下：</p>
-<p>#include &lt;stdio.h&gt;<br>int main(void)<br>{<br>    int data;<br>    int count=0;<br>    scanf(“%d”,&amp;data);<br>    while(data)<br>    {<br>        count ++;<br>        data=data&amp;(data-1);<br>    }<br>    printf(“%d”, count);<br>    return 0;<br>} </p>
-<p>思路：初始只考虑了将输入数转换为二进制数存入数组，再一一检查数组中1的个数，既耗内存又耗时间。后来在网上查找其他解决方<br>法，才知道位运算可以轻松解决这个问题。</p>
-<p>实现文件读写操作<br>文件写入后需要用rewind()函数使文件指针回到文件开头，不然后续的读入操作将会受影响。</p>
-<p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>int main(void)<br>{<br>    FILE *fp;<br>    int num;<br>    int i;<br>    fp=fopen(“D:\testfile.txt”,”wb+”);<br>    if(fp==NULL)<br>    {<br>        system(“color 2C”);<br>        printf(“Error!!!\n”);<br>    }<br>    else<br>    {<br>        for(i=0;i&lt;5;i++)<br>        {<br>        scanf(“%d”,&amp;num);<br>        fprintf(fp,”%4d”,num);<br>        }<br>    }<br>    int s=0;<br>    rewind(fp);<br>    for(i=0;i&lt;5;i++)<br>    {<br>    if(1==fscanf(fp,”%d”,&amp;s))<br>    printf(“%4d”,s);<br>    else<br>    {<br>        system(“color 47”);<br>        printf(“Error!!!\n”);<br>    }<br>    }<br>    return 0;<br> }</p>
-<p>蓝桥杯b组2、3题：<br>2既约分数:<br>#include&lt;stdio.h&gt;<br>int gongyue(int a,int b)<br>{<br>    int i,min;<br>    if(a&gt;b)<br>    min=b;<br>    else<br>    min=a;<br>    for(i=min;i&gt;0;i–)<br>    {<br>        if((a%i==0)&amp;&amp;(b%i==0))<br>        break;<br>    }<br>    return i;<br>}<br>int main(void)<br>{<br>    int i=1;<br>    int num=0;<br>    for(;i&lt;=2020;i++)<br>        {<br>            int j=1;<br>            for(;j&lt;=2020;j++)<br>            {<br>                if(gongyue(i,j)==1)<br>                num++;<br>            }<br>        }<br>        printf(“%d”,num);<br>    return 0;<br>}</p>
-<p>3蛇形填数:<br>#include&lt;stdio.h&gt;<br>int main(void)<br>{<br>    int i=1;<br>    int j=0;<br>    int a[50][50];<br>    a[0][0]=1;<br>    a[0][1]=2;<br>    a[1][0]=3;<br>    for(int num=3;num&lt;50*25;)<br>    {<br>        if(i==0&amp;&amp;j!=0)<br>        {<br>            a[i][j+1]=a[i][j]+1;<br>            j++;<br>            num++;<br>        }<br>        if(j==0&amp;&amp;i!=0)<br>        {<br>            a[i+1][j]=a[i][j]+1;<br>            i++;<br>            num++;<br>        }<br>        if(i!=0&amp;&amp;j==0)<br>        {<br>            while(i!=0)<br>            {<br>                a[i-1][j+1]=a[i][j]+1;<br>                i–;<br>                j++;<br>                num++;<br>            }<br>            continue;<br>        }<br>        if(i==0&amp;&amp;j!=0)<br>        {<br>            while(j!=0)<br>            {<br>                a[i+1][j-1]=a[i][j]+1;<br>                i++;<br>                j–;<br>                num++;<br>            }<br>            continue;<br>            }<br>    }<br>    printf(“%d\n”,a[19][19]);<br>    return 0;<br>}</p>
+		<p>位、字节、字（bits, Bytes, words）是计算机数据存储的单位。位是最小的存储单位，每一个位存储一个1位的二进制码，一个字节由8位组成。而字通常为16、32或64个位组成。</p>
+<p>Java：<br>类型     byte    short    char    int    float    long    double<br>所占字节  1           2       2      4      4      8        8</p>
+<p>局部变量使用前要声明初始化，成员变量和静态变量如不自行初始化，系统会给予默认初始值，如下：<br>类型      int     double       char       Boolean<br>初始值     0       0.0       ‘\u0000’       false</p>
+<p>常量定义格式： final type vername =value; (例：final PI = 3.14;) 一旦初始化后不可更改值</p>
+<p>引用数据类型的大小为4个字节，记录的是引用对象的地址。</p>
+<p>浮点数比较时使用BigDecimal类</p>
+<p>二元运算规则：<br>整数运算时，两个操作数有long，则结果为long。没有时都是int<br>浮点运算时，有double，结果就是double，只有两个操作数都是float，才为float</p>
+<p>BigInteger类的常用方法：<br>public BigInteger add(BigInteger val)   返回当前大整数对象与参数指定的大整数对象的和<br>public BigInteger subtract(BigInteger val)  返回当前大整数对象与参数指定的大整数对象的差<br>public BigInteger multiply(BigInteger val)   返回当前大整数对象与参数指定的大整数对象的积<br>public BigInteger devide(BigInteger val)    返回当前大整数对象与参数指定的大整数对象的商<br>public BigInteger remainder(BigInteger val)    返回当前大整数对象与参数指定的大整数对象的余<br>public int compareTo(BigInteger val)    返回当前大整数对象与参数指定的大整数对象的比较结果，返回值是1、-1、0，分别<br>表示当前大整数对象大于、小于或等于参数指定的大整数。<br>public BigInteger abs()    返回当前大整数对象的绝对值<br>public BigInteger pow(int exponent)   返回当前大整数对象的exponent次幂。<br>public String toString()    返回当前当前大整数对象十进制的字符串表示。<br>public String toString(int p)   返回当前大整数对象p进制的字符串表示。</p>
+<p>ACM1002记录：</p>
+<p>import java.math.BigInteger;<br>import java.util.Scanner;<br>public class Acm1002 {</p>
+<pre><code>public static void main(String[] args) &#123;
+    // TODO Auto-generated method stub
+    Scanner sc = new Scanner(System.in);
+       int n = sc.nextInt();
+       for(int i=1; i&lt;=n; i++)
+       &#123;
+           BigInteger a = sc.nextBigInteger();
+           BigInteger b = sc.nextBigInteger();
+           BigInteger sum = a.add(b);
+           System.out.println(&quot;Case &quot;+i+&quot;:&quot;);
+           System.out.println(a +&quot; + &quot; + b +&quot; = &quot;+sum);
+           if(i!=n) System.out.println();
+        &#125;
+    &#125;</code></pre>
+<p>}</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -128,7 +140,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://gitee.com/e18-16/texthow/2020/10/26/%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%951/" data-title="题目记录 | E18-16" data-tsina="" class="share clearfix">
+	  <div data-url="https://gitee.com/e18-16/texthow/2020/11/15/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/" data-title="学习记录2 | E18-16" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -141,19 +153,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/texthow/2020/10/31/学习记录1/" title="学习记录">
-  <strong>上一篇：</strong><br/>
-  <span>
-  学习记录</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/texthow/2020/10/19/The-First-blog/"  title="First blog">
+<a href="/texthow/2020/10/31/学习记录1/"  title="学习记录">
  <strong>下一篇：</strong><br/> 
- <span>First blog
+ <span>学习记录
 </span>
 </a>
 </div>
