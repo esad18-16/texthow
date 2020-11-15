@@ -105,6 +105,8 @@
 <p>二元运算规则：<br>整数运算时，两个操作数有long，则结果为long。没有时都是int<br>浮点运算时，有double，结果就是double，只有两个操作数都是float，才为float</p>
 <p>BigInteger类的常用方法：<br>public BigInteger add(BigInteger val)   返回当前大整数对象与参数指定的大整数对象的和<br>public BigInteger subtract(BigInteger val)  返回当前大整数对象与参数指定的大整数对象的差<br>public BigInteger multiply(BigInteger val)   返回当前大整数对象与参数指定的大整数对象的积<br>public BigInteger devide(BigInteger val)    返回当前大整数对象与参数指定的大整数对象的商<br>public BigInteger remainder(BigInteger val)    返回当前大整数对象与参数指定的大整数对象的余<br>public int compareTo(BigInteger val)    返回当前大整数对象与参数指定的大整数对象的比较结果，返回值是1、-1、0，分别<br>表示当前大整数对象大于、小于或等于参数指定的大整数。<br>public BigInteger abs()    返回当前大整数对象的绝对值<br>public BigInteger pow(int exponent)   返回当前大整数对象的exponent次幂。<br>public String toString()    返回当前当前大整数对象十进制的字符串表示。<br>public String toString(int p)   返回当前大整数对象p进制的字符串表示。</p>
 <p>ACM1002记录：</p>
+<blockquote>
+</blockquote>
 <p>import java.math.BigInteger;<br>import java.util.Scanner;<br>public class Acm1002 {</p>
 <pre><code>public static void main(String[] args) &#123;
     // TODO Auto-generated method stub
@@ -170,50 +172,12 @@
 </header>
     <div class="article-content">
         
-        <p>无符号数（unsigned）<br>在C语言中，如果一个运算包含一个有符号数和一个无符号数，那么C语言会隐式地将有符号数转换为无符号数，这对于标准的算术运算没什么问题，但是对于 &lt; 和 &gt; 这样的关系运算符来说，它会出现不是预料中的结果。<br>#include &lt;stdio.h&gt;<br>int main(void)<br>{<br>    unsigned int a=6;<br>    int b=-20;<br>    (a+b&gt;6)?puts(“&gt;6”):puts(“&lt;=6”);<br>    printf(“%d\n%d”,(a+b&gt;6),a+b);<br>    return 0;<br>}<br>运行结果：</p>
-<blockquote>
-<p>6<br>1<br>-14</p>
-</blockquote>
-<p>ACM003：<br>                        查找缺失的元素<br>描述：给定一个数组，找到其中的最大值n,输出[0,n]，在该数组中缺失的元素。<br>输入：输入任意个自然数，当输入为-1时，结束输入。<br>输出：输出缺失的元素，每两个元素之间用空格分隔。<br>输入样例1                       输出样例1<br>0 1 4 -1                       2 3</p>
-<p>当时的想法是直接对比每一个元素与其下标值，小则输出下标，没有如题目要求找最大值，再输出缺失元素。后再思考题目后，决定先找最大值，然后另设一个数组初始值为其对应下标，再将前一数组排序，一一对比，输出缺失元素。<br>#include&lt;stdio.h&gt;<br>int main(void)<br>{<br>    int i;<br>    int a[10000]={0};<br>    for(i=0;i&lt;10000&amp;&amp;a[i-1]!=-1;i++)     //数组存储数，以-1为判定条件结束输入<br>    {<br>        scanf(“%d”,&amp;a[i]);<br>    }<br>    int num=i;<br>    int j,s;<br>    for(i=0;i&lt;num;i++)                   //找出数组中的最大值<br>    {<br>        for(j=i+1;j&lt;num;j++)<br>        {<br>            if(a[i]&lt;a[j]) s=a[j];<br>        }<br>    }<br>    int z[s+1];                          //另设一个数组，长度为a[]的最大值并初始化值为对应下标<br>    for(j=0;j&lt;=s;j++)<br>    z[j]=j;<br>    int e;<br>    for(i=0;i&lt;num;i++)                     //将最大值前的数（冒泡）排序便于下一步排序<br>    {<br>        for(j=i+1;j&lt;num;j++)<br>        {<br>            if(a[i]&gt;a[j])<br>            {<br>                e=a[i];<br>                a[i]=a[j];<br>                a[j]=e;<br>            }<br>        }<br>    }<br>    j=0;<br>    int x;<br>    for(i=0;i&lt;=num;i++)                  //输出a数组关于0-最大值缺失的元素<br>    {<br>        x=0;<br>        for(;j&lt;=s;j++)<br>        {<br>            if(a[i]&gt;z[j])<br>            {<br>                printf(“%d “,z[j]);<br>                x++;<br>            }<br>            else<br>            break;<br>        }<br>        if(x!=0||j==0)                   //测试发现0需要特殊对待<br>        j++;<br>    }<br>    return 0;<br> } </p>
-<p>java:list、set、map的简单应用：<br>public class Testgenerics {<br>    public static void testlist() {<br>//    List<String> sa=Arrays.asList(“11”,”07”,”18”,”16”);   //初始化使用Arrays.asList(无法增减否则报错)<br>        List<String> sa=new ArrayList<String>()  {{
-			add("11");				//双括号大法好！就是效率会有损失，将list返回给其他地方使用时可能内存会有泄露
-			add("07");
-			add("18");
-			add("16");
-		} };
-		System.out.println(sa);
-		sa.add(1,"20");                    //在sa[1]中加入元素20，元素后移
-		System.out.println(sa);
-		sa.remove(2);						//删除sa[2]
-		System.out.println(sa);
-	}
-
-	public static void testmap() {
-		Map<Integer,String> m=new HashMap<Integer,String>(){{
-		put(1, "esd");
-		put(2, "esa");						//双括号{{}}初始化hashmap
-		put(3, "rsf");
-		}};<br>        System.out.println(m);<br>        System.out.println(m.containsKey(2));             //输出键为2的值<br>        System.out.println(m.containsValue(“rsf”));        //输出值为rsf的键<br>    }</p>
-<pre><code>public static void testset() &#123;
-    String[] shuzu=new String[10];                    //初始化数组
-    for(int i=0;i&lt;10;i++)
-    &#123;
-        shuzu[i]= (&quot;&quot;+Math.round(Math.random()*5));
-    &#125;
-    for(String temp: shuzu)
-    System.out.print(temp+&quot; &quot;);
-    System.out.println();
-    List aaa=Arrays.asList(shuzu);                    //将数组转化为list集合
-    System.out.println(aaa);
-    Set&lt;Integer&gt; set=new HashSet&lt;Integer&gt;(aaa);        //将list转化为set集合对非重复元素进行筛选
-    System.out.println(set);
-&#125;</code></pre>
-<p>}</p>
-
+        <p>无符号数（unsigned）<br>在C语言中，如果一个运算包含一个有符号数和一个无符号数，那么C语言会隐式地将有符号数转换为无符号数，这对于标准的算术运算没什么问题，但是对于 &lt; 和 &gt; 这样的关系运算符来说，它会出现不是预料中的结果。</p>
         
         
         <p class="article-more-link">
+          
+            <a href="/texthow/2020/10/31/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951/#more">Read More</a>
           
        </p>
     </div>
@@ -369,12 +333,6 @@
             
           </li>
         
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
-            
-          </li>
-        
     </ul>
 </div>
 
@@ -387,7 +345,7 @@
 
   <div class="weiboshow">
   <p class="asidetitle">Weibo</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
 </div>
 
 
@@ -403,13 +361,11 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+		<p> Hello ,I&#39;m learning how to use code. <br/>
 			This is my blog,believe it or not.</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
 		
 		
 		
