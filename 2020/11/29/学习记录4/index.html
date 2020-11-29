@@ -4,20 +4,28 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>E18-16</title>
+    <title>学习记录4 | E18-16</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Quan">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="E18-16">
-<meta property="og:url" content="https://gitee.com/e18-16/texthow/index.html">
+    <meta name="description" content="利用string库函数的strcpy复制、strcat拼接、strcmp比较即可完成 C语言中函数返回字符串的四种方法：1、 将字符串指针作为函数参数传入，并返回该指针。2、 使用malloc函数动态分配内存，注意在主调函数中释放。3、 返回一个静态局部变量。采用了静态局部变量（位于静态区，程序结束时由系统进行释放），这就导致，如果多次调用这个函数，下一次调用会将上一次调用的结果覆盖掉。4、 使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习记录4">
+<meta property="og:url" content="https://gitee.com/e18-16/texthow/2020/11/29/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%954/index.html">
 <meta property="og:site_name" content="E18-16">
+<meta property="og:description" content="利用string库函数的strcpy复制、strcat拼接、strcmp比较即可完成 C语言中函数返回字符串的四种方法：1、 将字符串指针作为函数参数传入，并返回该指针。2、 使用malloc函数动态分配内存，注意在主调函数中释放。3、 返回一个静态局部变量。采用了静态局部变量（位于静态区，程序结束时由系统进行释放），这就导致，如果多次调用这个函数，下一次调用会将上一次调用的结果覆盖掉。4、 使用">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31662.png">
+<meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31663%E9%A2%98.png">
+<meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31663%E4%BE%8B.png">
+<meta property="article:published_time" content="2020-11-29T12:23:25.000Z">
+<meta property="article:modified_time" content="2020-11-29T12:35:04.655Z">
 <meta property="article:author" content="Quan">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31662.png">
 
     
     <link rel="alternative" href="/atom.xml" title="E18-16" type="application/atom+xml">
@@ -31,8 +39,6 @@
     
     
 <link rel="stylesheet" href="/texthow/css/style.css">
-<link rel="stylesheet" href="/texthow/%02.css">
-<link rel="stylesheet" href="/texthow/.css">
 
 <meta name="generator" content="Hexo 5.2.0"></head>
 
@@ -75,12 +81,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/texthow/2020/11/29/学习记录4/" title="学习记录4" itemprop="url">学习记录4</a>
@@ -94,19 +98,21 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p><img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31662.png" alt="力扣1662"><br>利用string库函数的strcpy复制、strcat拼接、strcmp比较即可完成</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
+		<p><img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31662.png" alt="力扣1662"><br>利用string库函数的strcpy复制、strcat拼接、strcmp比较即可完成</p>
 <p>C语言中函数返回字符串的四种方法：<br>1、 将字符串指针作为函数参数传入，并返回该指针。<br>2、 使用malloc函数动态分配内存，注意在主调函数中释放。<br>3、 返回一个静态局部变量。<br>采用了静态局部变量（位于静态区，程序结束时由系统进行释放），这就导致，如果多次调用这个函数，下一次调用会将上一次调用的结果覆盖掉。<br>4、 使用全局变量。</p>
 <p><img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31663%E9%A2%98.png" alt="力扣1663题"><br><img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31663%E4%BE%8B.png" alt="力扣1663例"><br>目前看题只想到了根据给的数n,k,先将总数k拆由k/n所得的平均数进一个数组，余数存在就一一从尾开始分开，如果余数大于26就一一从尾分进数组，否则直接加到数组最后一个中，再通过循环一一确定好字典序（把数组前面的数转到后面去）。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 
@@ -114,282 +120,45 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="https://gitee.com/e18-16/texthow/2020/11/29/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%954/" data-title="学习记录4 | E18-16" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/texthow/2020/11/22/学习记录3/" title="学习记录3." itemprop="url">学习记录3.</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
-		
-  <p class="article-time">
-    <time datetime="2020-11-22T14:25:01.000Z" itemprop="datePublished"> Published 2020-11-22</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>this关键字：<br>this关键字代表了所属函数的调用者对象。(哪个对象调用这个函数，this就代表哪个对象)<br>如果存在同名成员变量与局部变量时，在方法内部默认是访问局部变量的数据，可以通过this关键字指定访问成员变量的数据。<br>存在同名的成员变量与局部变量时，在方法的内部访问的是局部变量(java 采取的是“就近原则”的机制访问的。)<br>在一个构造函数中可以调用另外一个构造函数初始化对象。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/texthow/2020/11/22/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/texthow/2020/11/22/学习记录3/"  title="学习记录3.">
+ <strong>下一篇：</strong><br/> 
+ <span>学习记录3.
+</span>
+</a>
 </div>
 
-</footer>
+</nav>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/texthow/2020/11/15/学习记录2/" title="学习记录2" itemprop="url">学习记录2</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
-		
-  <p class="article-time">
-    <time datetime="2020-11-15T09:49:44.000Z" itemprop="datePublished"> Published 2020-11-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>位、字节、字（bits, Bytes, words）是计算机数据存储的单位。位是最小的存储单位，每一个位存储一个1位的二进制码，一个字节由8位组成。而字通常为16、32或64个位组成。</p>
-<p>Java：<br>类型     byte    short    char    int    float    long    double<br>所占字节  1           2       2      4      4      8        8</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/texthow/2020/11/15/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
 	
-</div>
-
-</footer>
-
-
-    </article>
 
 
 
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/texthow/2020/10/31/学习记录1/" title="学习记录" itemprop="url">学习记录</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
-		
-  <p class="article-time">
-    <time datetime="2020-10-31T07:44:23.000Z" itemprop="datePublished"> Published 2020-10-31</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>无符号数（unsigned）<br>在C语言中，如果一个运算包含一个有符号数和一个无符号数，那么C语言会隐式地将有符号数转换为无符号数，这对于标准的算术运算没什么问题，但是对于 &lt; 和 &gt; 这样的关系运算符来说，它会出现不是预料中的结果。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/texthow/2020/10/31/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/texthow/2020/10/26/题目记录1/" title="题目记录" itemprop="url">题目记录</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
-		
-  <p class="article-time">
-    <time datetime="2020-10-26T00:38:38.000Z" itemprop="datePublished"> Published 2020-10-26</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>题目描述<br>       输入一个int型的正整数，计算出该int型数据在内存中存储时1的个数。</p>
-<p>输入描述:<br>       输入一个整数（int类型）</p>
-<p>输出描述:<br>        这个数转换成2进制后，输出1的个数<br>示例1<br>输入<br>6<br>输出<br>2</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/texthow/2020/10/26/%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%951/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/texthow/2020/10/19/The-First-blog/" title="First blog" itemprop="url">First blog</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
-		
-  <p class="article-time">
-    <time datetime="2020-10-19T07:53:43.196Z" itemprop="datePublished"> Published 2020-10-19</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="散列表查找操作"><a href="#散列表查找操作" class="headerlink" title="散列表查找操作"></a>散列表查找操作</h2>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/texthow/2020/10/19/The-First-blog/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -512,12 +281,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -590,4 +436,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
