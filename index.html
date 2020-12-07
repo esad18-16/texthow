@@ -83,6 +83,60 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/texthow/2020/12/07/学习记录5/" title="学习记录5" itemprop="url">学习记录5</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
+		
+  <p class="article-time">
+    <time datetime="2020-12-07T10:44:08.000Z" itemprop="datePublished"> Published 2020-12-07</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>EOF是End Of File 的缩写，是c语言中标准库中定义的宏，定义为：#define  EOF  (-1)；<br>EOF的值为-1，是int类型数据，在32位系统中，可以表示为0xFFFFFFFF; EOF 不是一个字符，也不是文件中实际存在的内容。EOF不但能表示读文件到了结尾这一状态，它还能表示 I/O 操作中的读、写错误（可以用 ferror() 来检测）以及其它一些关联操作的错误状态</p>
+<p>(详情参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/flyyyri/article/details/5084981?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control">https://blog.csdn.net/flyyyri/article/details/5084981?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control</a>)</p>
+<p>Java-GUI<br>JFrame()创建一个初始时不可见的窗口<br>JFrame(String title)创建一个标题为title且初始时不可见的窗口<br>JFrame.getContentPane().setBackground(Color.c)改变窗口颜色（setBackground()方法继承自Frame,直接使用无效）<br>setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)设置窗口关闭模式<br>JPanel(LayoutManager layout) 以指定的布局管理器创建面板，默认流式布局</p>
+<pre><code>                        力扣861</code></pre>
+<p>题目：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A3861%E9%A2%98.jpg" alt="力扣961题"><br>题解：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A3861%E8%A7%A3.jpg" alt="力扣961解"><br>初始没有啥思路，果断跑去看题解学习，得出思路是：先判断每一行首位是否为零，若不为零则移动该行，因为在二进制中第一位数比后面的数都大，考虑第一位是否为零即可，然后判断除第一列的其他列中的零的数目是否大于一的数目，若大则移动该列，其中用一个数记录可得出所要结果。<br>还有做了一些acm的小题就懒得放上来了</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/texthow/2020/11/29/学习记录4/" title="学习记录4" itemprop="url">学习记录4</a>
   </h1>
   <p class="article-author">By
@@ -97,12 +151,11 @@
     <div class="article-content">
         
         <p><img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31662.png" alt="力扣1662"><br>利用string库函数的strcpy复制、strcat拼接、strcmp比较即可完成</p>
-<p>C语言中函数返回字符串的四种方法：<br>1、 将字符串指针作为函数参数传入，并返回该指针。<br>2、 使用malloc函数动态分配内存，注意在主调函数中释放。<br>3、 返回一个静态局部变量。<br>采用了静态局部变量（位于静态区，程序结束时由系统进行释放），这就导致，如果多次调用这个函数，下一次调用会将上一次调用的结果覆盖掉。<br>4、 使用全局变量。</p>
-<p><img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31663%E9%A2%98.png" alt="力扣1663题"><br><img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A31663%E4%BE%8B.png" alt="力扣1663例"><br>目前看题只想到了根据给的数n,k,先将总数k拆由k/n所得的平均数进一个数组，余数存在就一一从尾开始分开，如果余数大于26就一一从尾分进数组，否则直接加到数组最后一个中，再通过循环一一确定好字典序（把数组前面的数转到后面去）。</p>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/texthow/2020/11/29/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%954/#more">Read More</a>
           
        </p>
     </div>
