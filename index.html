@@ -83,6 +83,140 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/texthow/2020/12/21/学习记录7/" title="学习记录7" itemprop="url">学习记录7</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
+		
+  <p class="article-time">
+    <time datetime="2020-12-21T07:42:13.000Z" itemprop="datePublished"> Published 2020-12-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>JAVA文件读取:<br>按字符读取：FileReader.read(char[] cbuf),参数是目标缓冲区，返回读取的字符数量，如果已经达到文件末尾返回-1.<br>按行读取:BufferReader.readline(),没有参数，返回该行字符串，不包含行终止符，如已达末尾返回null<br>窗口关闭：dispose() 仅仅释放窗体资源,而不会关闭主线程  </p>
+<p>这周忙着弄实验啥的，没学啥，都还在收藏夹没有整理，传智杯的也没有整理完下次再发传智杯的(-.-)</p>
+<p>力扣49：<br>首先设置二维list表，用于return，然后设置一维的list用来添加到二维的中，再设置一维数组用来存储每个字符串的大小，然后进行循环判断，如果其中没有字符串的大小相等那么直接添加到二维链表中，如果有相同大小的，将字符串按从小到大的次序排好，再比较字符串是否相等，相等就添加到一维链表中，其中设置记录，如果已进入链表的，将数组的大小定为-9999，循环到直接跳过。（做完后看到官方的，才知道直接计字符串出现次数比较即可，我的时间利用率太低了。。。）<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E9%A2%98.PNG" alt="力扣49题"><br>运行结果：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png" alt="力扣49运行结果"></p>
+<p>代码：</p>
+<pre><code>
+class Solution &#123;
+    public List<List<String>> groupAnagrams(String[] strs) &#123;
+    List<List<String>> ll=new ArrayList<List<String>>();
+        int[] num=new int[strs.length];
+        int sum;
+        for(int i=0;i<strs.length;i++)
+        &#123;
+            sum=0;
+            for(int j=0;j<strs[i].length();j++)
+            &#123;
+                sum+=(int)strs[i].charAt(j)-(int)'a'+1;
+            &#125;
+            num[i]=sum;
+        &#125;
+        for(int i=0;i<strs.length;i++)
+        &#123;
+            if(num[i]==-9999) continue;
+            List<String> l=new ArrayList<String>();
+            l.add(strs[i]);
+            for(int j=i+1;j<strs.length;j++)
+            &#123;
+                if(num[i]==num[j]&&strs[i].length()==strs[j].length())
+                &#123;
+                    char[] check1=strs[i].toCharArray();
+                    char[] check2=strs[j].toCharArray();
+                    for(int k=0;k<strs[i].length()-1;k++)
+                    &#123;
+                        for(int q=k+1;q<strs[i].length();q++)
+                        &#123;
+                            if(check1[k]>check1[q])
+                            &#123;
+                                char a=check1[k];
+                                check1[k]=check1[q];
+                                check1[q]=a;
+                            &#125;
+                            if(check2[k]>check2[q])
+                            &#123;
+                                char a=check2[k];
+                                check2[k]=check2[q];
+                                check2[q]=a;
+                            &#125;
+
+                        &#125;
+                    &#125;
+                    if(Arrays.equals(check1, check2))
+                    &#123;
+                    l.add(strs[j]);
+                    num[j]=-9999;
+                    &#125;
+                &#125;
+            &#125;
+            ll.add(l);
+        &#125;
+        return ll;
+    &#125;
+&#125;
+ </code></pre>
+
+
+<p>力扣860：<br>用JAVA直接设置两个变量存储10美元和5美元即可（20美元的找不了零），然后循环判断记录5美元、10美元的增减量，当出现变量出现负数则代表找不了零返回false即可。<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A3860%E9%A2%98%E7%9B%AE.jpg" alt="力扣860题目"><br>运行结果：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A3860%E7%BB%93%E6%9E%9C.jpg" alt="力扣860结果"><br>代码：<br> <pre><code><br>class Solution &#123;<br>    public boolean lemonadeChange(int[] bills) &#123;<br>       int wu=0,shi=0;<br>            for(int temp:bills)<br>            &#123;<br>                if(temp==5)<br>                    wu++;</p>
+<pre><code>            else if(temp==10)
+            &#123;
+                shi++;
+                wu--;
+            &#125;
+            else
+            &#123;
+                if(shi&gt;0)
+                &#123;
+                    shi--;
+                    wu--;
+                &#125;
+                else wu-=3;
+            &#125;
+        if(wu&lt;0)
+        return false;
+        &#125;
+        return true;
+&#125;</code></pre>
+<p>}<br> </code></pre></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/texthow/2020/12/14/学习记录6/" title="学习记录6" itemprop="url">学习记录6</a>
   </h1>
   <p class="article-author">By
@@ -98,71 +232,11 @@
         
         <p>抽象方法：使用abstract修饰的方法，没有方法体，只有声明。必须由子类实现<br>抽象类：<br>    1、有抽象方法的类只能定义成抽象类<br>    2、抽象类不能实例化<br>    3、抽象类可以包含属性、方法、构造器，但是构造器只能用来被子类调用<br>    4、抽象类只能用来被继承</p>
 <p>接口（interface）：<br>    1、访问修饰符只能是public或默认设置（default）<br>    2、接口可以多继承<br>    3、属性只能是常量（public static final修饰）<br>    4、方法只能是public abstract<br>    5、子类通过implement来实现接口的“规范”<br>    6、不能实例化</p>
-<p>内部类：<br>    1、可以使用public、default、protected、private、static来修饰（外部类只能由public、default修饰）<br>    2、提供了更好的封装，只能由外部类直接访问<br>    3、可以直接访问外部类的私有属性，但外部类不能访问内部类的内部属性<br>    4、使多重继承的解决方案更完整<br>    5、访问要点：内部类属性：this.变量名，外部类属性：外部类名.this.变量名，在外部类中定义内部类：new Inner()，在外部类以外的地方使用非静态内部类：Outer.Inner varname=new Outer.new Inner();</p>
-<p>String:<br>JAVA中可以使用“+”运算符将两个字符串连接，并且当其中由String类型时，系统将自动将另一个操作数转换为字符串再连接。<br>判断字符串相等使用equal（）不用==<br>String详解：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41477980/article/details/85109179?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522160791182519195283096493%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=160791182519195283096493&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-85109179.nonecase&amp;utm_term=java%20String&amp;spm=1018.2118.3001.4449">https://blog.csdn.net/weixin_41477980/article/details/85109179?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522160791182519195283096493%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=160791182519195283096493&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-85109179.nonecase&amp;utm_term=java%20String&amp;spm=1018.2118.3001.4449</a></p>
-<p>力扣2<br>先设置两个链表一个用来存储相加后的数据，一个用来记录链表头部便以返回，然后将传过来的链表一一对应相加，有超于10的就将i复赋值为1，然后减10存储到链表中，通过判断i是否为1，下一步再是否加1。一共会有两种情况，一：两个链表长度一致，对应加起来即可，检测最后i是否为1，为1链表就要再创一个next然后加1即可。二：两个链表长度不一致，先将长度短的加完，然后再判断i是否为1，为0直接将剩余的链表依次赋值，为1就按之前步骤一样一步一步判断相加。<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A32%E9%A2%98.png" alt="力扣2题"><br>运行结果：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A32%E7%BB%93%E6%9E%9C.png" alt="力扣2结果"><br>代码如下:<br>class Solution {<br>    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {<br>         ListNode l3 =new ListNode(0);<br>         ListNode l4=l3;<br>         int x=0,i=0;<br>         while(l1!=null&amp;&amp;l2!=null)<br>         {<br>             if(i==0)<br>             x=l1.val+l2.val;<br>             else x=l1.val+l2.val+1;<br>             if(x&gt;9)<br>             {<br>                 l3.val=x-10;<br>                 i=1;<br>             }<br>             else {<br>                 l3.val=x;<br>                 i=0;<br>             }</p>
-<pre><code>         l1=l1.next;
-         l2=l2.next;
-         if(l1==null||l2==null) break;
-         l3.next=new ListNode(0);
-         l3=l3.next;
-     &#125;
-     while(l1==null&amp;&amp;l2!=null)
-     &#123;
-         l3.next=new ListNode(0) ;
-         l3=l3.next;
-         if(i==1)
-         if(l2.val+1&gt;9)
-         &#123;
-             l3.val=l2.val+1-10;
-             i=1;
-         &#125;
-         else&#123;
-             l3.val=l2.val+1;
-             i=0;
-         &#125;
-         else if(i==0)
-         &#123;
-             l3.val=l2.val;
-             i=0;
-         &#125; 
-         l2=l2.next;
-     &#125;
-     while(l1!=null&amp;&amp;l2==null)
-     &#123;
-         l3.next=new ListNode(0) ;
-         l3=l3.next;
-         if(i==1)
-         if(l1.val+1&gt;9)
-         &#123;
-             l3.val=l1.val+1-10;
-             i=1;
-         &#125;
-         else&#123;
-             l3.val=l1.val+1;
-             i=0;
-         &#125;
-         else if(i==0)
-         &#123;
-             l3.val=l1.val;
-             i=0;
-         &#125;
-         l1=l1.next;
-     &#125;
-
-     if(i==1)
-     &#123;
-         l3.next=new ListNode(0) ;
-         l3=l3.next;
-         l3.val=1;
-     &#125;
-        return l4;
-&#125;</code></pre>
-<p>}</p>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/texthow/2020/12/14/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%956/#more">Read More</a>
           
        </p>
     </div>
