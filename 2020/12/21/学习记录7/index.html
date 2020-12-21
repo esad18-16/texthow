@@ -19,11 +19,11 @@
 <meta property="og:description" content="JAVA文件读取:按字符读取：FileReader.read(char[] cbuf),参数是目标缓冲区，返回读取的字符数量，如果已经达到文件末尾返回-1.按行读取:BufferReader.readline(),没有参数，返回该行字符串，不包含行终止符，如已达末尾返回null窗口关闭：dispose() 仅仅释放窗体资源,而不会关闭主线程   这周忙着弄实验啥的，没学啥，都还在收藏夹没有整理，传">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E9%A2%98.PNG">
-<meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png">
+<meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.PNG">
 <meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A3860%E9%A2%98%E7%9B%AE.jpg">
 <meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A3860%E7%BB%93%E6%9E%9C.jpg">
 <meta property="article:published_time" content="2020-12-21T07:42:13.000Z">
-<meta property="article:modified_time" content="2020-12-21T07:54:27.487Z">
+<meta property="article:modified_time" content="2020-12-21T08:03:12.202Z">
 <meta property="article:author" content="Quan">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E9%A2%98.PNG">
@@ -110,7 +110,7 @@
 		
 		<p>JAVA文件读取:<br>按字符读取：FileReader.read(char[] cbuf),参数是目标缓冲区，返回读取的字符数量，如果已经达到文件末尾返回-1.<br>按行读取:BufferReader.readline(),没有参数，返回该行字符串，不包含行终止符，如已达末尾返回null<br>窗口关闭：dispose() 仅仅释放窗体资源,而不会关闭主线程  </p>
 <p>这周忙着弄实验啥的，没学啥，都还在收藏夹没有整理，传智杯的也没有整理完下次再发传智杯的(-.-)</p>
-<p>力扣49：<br>首先设置二维list表，用于return，然后设置一维的list用来添加到二维的中，再设置一维数组用来存储每个字符串的大小，然后进行循环判断，如果其中没有字符串的大小相等那么直接添加到二维链表中，如果有相同大小的，将字符串按从小到大的次序排好，再比较字符串是否相等，相等就添加到一维链表中，其中设置记录，如果已进入链表的，将数组的大小定为-9999，循环到直接跳过。（做完后看到官方的，才知道直接计字符串出现次数比较即可，我的时间利用率太低了。。。）<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E9%A2%98.PNG" alt="力扣49题"><br>运行结果：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png" alt="力扣49运行结果"></p>
+<p>力扣49：<br>首先设置二维list表，用于return，然后设置一维的list用来添加到二维的中，再设置一维数组用来存储每个字符串的大小，然后进行循环判断，如果其中没有字符串的大小相等那么直接添加到二维链表中，如果有相同大小的，将字符串按从小到大的次序排好，再比较字符串是否相等，相等就添加到一维链表中，其中设置记录，如果已进入链表的，将数组的大小定为-9999，循环到直接跳过。（做完后看到官方的，才知道直接计字符串出现次数比较即可，我的时间利用率太低了。。。）<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E9%A2%98.PNG" alt="力扣49题"><br>运行结果：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.PNG" alt="力扣49运行结果"></p>
 <p>代码：</p>
 <pre><code>
 class Solution &#123;
