@@ -83,6 +83,61 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/texthow/2020/12/27/学习记录8/" title="学习记录8" itemprop="url">学习记录8</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
+		
+  <p class="article-time">
+    <time datetime="2020-12-27T12:28:06.000Z" itemprop="datePublished"> Published 2020-12-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>传智杯初赛题1：<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA1.png" alt="传智题1"><br>解题思路：设置两个参数j、num，j用来记录已经报名了多少个学员到达m个时回到0，num记录费用，直接使用for循环以n为结束标志，当j与m相等时价格v+=a。<br>AC代码如下：<br> <pre><code><br>#include<stdio.h><br>int main(void)<br>&#123;<br>    int n,v,m,a;<br>    while(scanf("%d %d %d %d",&n,&v,&m,&a)!=EOF)<br>    &#123;<br>        int i,j=0,num=0;<br>        for(i=0;i<n;i++)<br>        &#123;<br>            if(j==m)<br>            &#123;<br>                v+=a;<br>                j=0;<br>            &#125;<br>            num+=v;<br>            j++;<br>        &#125;<br>        printf("%d\n",num);<br>     &#125;<br>    return 0;<br> &#125;<br> </code></pre></p>
+<p>传智杯初赛题2<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA2.png" alt="传智题2"><br>解题思路：<br>直接使用if语句判断即可，分为三种情况，首先是成绩大于等于90的输出4.0，然后时60到89的，输出4.0-(90-成绩)*0.1即可，最后是小于60分的，由于根据题目要求开根后乘以10，这种情况不存在大于等90分的，直接判断开根后乘以10是否大于等于60即可。</p>
+<p>AC代码如下：<br> <pre><code><br>#include<stdio.h><br>#include<math.h><br>int main(void)<br>&#123;<br>    int n;<br>    while(scanf("%d",&n)!=EOF)<br>    &#123;<br>        int num=0;<br>        if(n>=90)<br>        &#123;<br>            printf("4.0\n");<br>            continue;<br>        &#125;<br>        if(n>=60&&n<=89)<br>        &#123;<br>            printf("%.1f\n",4.0-(90-n)*0.1);<br>        &#125;<br>        if(n<60)<br>        &#123;<br>            num=(int)(sqrt(n)*10);                    //强制转化为int型直接去掉小数点后的数<br>            if(num>=60)                                  //实现题目要求的向下取整<br>            printf("%.1f\n",4.0-(90-num)*0.1);<br>            else printf("0.0\n");<br>        &#125;<br>    &#125;<br>    return 0;<br> &#125;<br> </code></pre></p>
+<p>传智杯初赛题3（未完成这个及后面的题0.0）<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA3.png" alt="传智题3"><br>解题思路：<br>设置链表存放志愿者的编号，时间，难度系数，然后按照题目要求改写sort()函数排序规则</p>
+<p>AC代码查看大佬的：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45309822/article/details/111465272">https://blog.csdn.net/qq_45309822/article/details/111465272</a></p>
+<p>后面4、5题都是查看这个大佬的了解思路了。6、7题题目都没看懂就略过了（–）</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/texthow/2020/12/21/学习记录7/" title="学习记录7" itemprop="url">学习记录7</a>
   </h1>
   <p class="article-author">By
@@ -98,93 +153,11 @@
         
         <p>JAVA文件读取:<br>按字符读取：FileReader.read(char[] cbuf),参数是目标缓冲区，返回读取的字符数量，如果已经达到文件末尾返回-1.<br>按行读取:BufferReader.readline(),没有参数，返回该行字符串，不包含行终止符，如已达末尾返回null<br>窗口关闭：dispose() 仅仅释放窗体资源,而不会关闭主线程  </p>
 <p>这周忙着弄实验啥的，没学啥，都还在收藏夹没有整理，传智杯的也没有整理完下次再发传智杯的(-.-)</p>
-<p>力扣49：<br>首先设置二维list表，用于return，然后设置一维的list用来添加到二维的中，再设置一维数组用来存储每个字符串的大小，然后进行循环判断，如果其中没有字符串的大小相等那么直接添加到二维链表中，如果有相同大小的，将字符串按从小到大的次序排好，再比较字符串是否相等，相等就添加到一维链表中，其中设置记录，如果已进入链表的，将数组的大小定为-9999，循环到直接跳过。（做完后看到官方的，才知道直接计字符串出现次数比较即可，我的时间利用率太低了。。。）<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E9%A2%98.PNG" alt="力扣49题"><br>运行结果：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A349%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.PNG" alt="力扣49运行结果"></p>
-<p>代码：</p>
-<pre><code>
-class Solution &#123;
-    public List<List<String>> groupAnagrams(String[] strs) &#123;
-    List<List<String>> ll=new ArrayList<List<String>>();
-        int[] num=new int[strs.length];
-        int sum;
-        for(int i=0;i<strs.length;i++)
-        &#123;
-            sum=0;
-            for(int j=0;j<strs[i].length();j++)
-            &#123;
-                sum+=(int)strs[i].charAt(j)-(int)'a'+1;
-            &#125;
-            num[i]=sum;
-        &#125;
-        for(int i=0;i<strs.length;i++)
-        &#123;
-            if(num[i]==-9999) continue;
-            List<String> l=new ArrayList<String>();
-            l.add(strs[i]);
-            for(int j=i+1;j<strs.length;j++)
-            &#123;
-                if(num[i]==num[j]&&strs[i].length()==strs[j].length())
-                &#123;
-                    char[] check1=strs[i].toCharArray();
-                    char[] check2=strs[j].toCharArray();
-                    for(int k=0;k<strs[i].length()-1;k++)
-                    &#123;
-                        for(int q=k+1;q<strs[i].length();q++)
-                        &#123;
-                            if(check1[k]>check1[q])
-                            &#123;
-                                char a=check1[k];
-                                check1[k]=check1[q];
-                                check1[q]=a;
-                            &#125;
-                            if(check2[k]>check2[q])
-                            &#123;
-                                char a=check2[k];
-                                check2[k]=check2[q];
-                                check2[q]=a;
-                            &#125;
-
-                        &#125;
-                    &#125;
-                    if(Arrays.equals(check1, check2))
-                    &#123;
-                    l.add(strs[j]);
-                    num[j]=-9999;
-                    &#125;
-                &#125;
-            &#125;
-            ll.add(l);
-        &#125;
-        return ll;
-    &#125;
-&#125;
- </code></pre>
-
-
-<p>力扣860：<br>用JAVA直接设置两个变量存储10美元和5美元即可（20美元的找不了零），然后循环判断记录5美元、10美元的增减量，当出现变量出现负数则代表找不了零返回false即可。<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A3860%E9%A2%98%E7%9B%AE.jpg" alt="力扣860题目"><br>运行结果：<img src="http://e18-16.gitee.io/myimg/img/%E5%8A%9B%E6%89%A3860%E7%BB%93%E6%9E%9C.jpg" alt="力扣860结果"><br>代码：<br> <pre><code><br>class Solution &#123;<br>    public boolean lemonadeChange(int[] bills) &#123;<br>       int wu=0,shi=0;<br>            for(int temp:bills)<br>            &#123;<br>                if(temp==5)<br>                    wu++;</p>
-<pre><code>            else if(temp==10)
-            &#123;
-                shi++;
-                wu--;
-            &#125;
-            else
-            &#123;
-                if(shi&gt;0)
-                &#123;
-                    shi--;
-                    wu--;
-                &#125;
-                else wu-=3;
-            &#125;
-        if(wu&lt;0)
-        return false;
-        &#125;
-        return true;
-&#125;</code></pre>
-<p>}<br> </code></pre></p>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/texthow/2020/12/21/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%957/#more">Read More</a>
           
        </p>
     </div>
