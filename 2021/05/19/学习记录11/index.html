@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>学习记录9 | E18-16</title>
+    <title>学习记录11 | E18-16</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Quan">
     
 
     
-    <meta name="description" content="蓝桥杯A、空间小蓝准备用 256MB 的内存空间开一个数组，数组的每个元素都是 32 位二进制整数，如果不考虑程序占用的空间和维护内存需要的辅助空间，请问256MB 的空间可以存储多少个 32 位二进制整数？ 直接敲计算机 (25610241024)&#x2F;4 B、卡片【问题描述】">
+    <meta name="description" content="115759. 找出所有子集的异或总和再求和一个数组的 异或总和 定义为数组中所有元素按位 XOR 的结果；如果数组为 空 ，则异或总和为 0 。例如，数组 [2,5,6] 的 异或总和 为 2 XOR 5 XOR 6 &#x3D; 1 。给你一个数组 nums ，请你求出 nums 中每个 子集 的 异或总和 ，计算并返回这些值相加之 和 。注意：在本题中，元素 相同 的不同子集应 多次 计数。数组 a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习记录9">
-<meta property="og:url" content="https://gitee.com/e18-16/texthow/2021/04/25/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%959/index.html">
+<meta property="og:title" content="学习记录11">
+<meta property="og:url" content="https://gitee.com/e18-16/texthow/2021/05/19/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%9511/index.html">
 <meta property="og:site_name" content="E18-16">
-<meta property="og:description" content="蓝桥杯A、空间小蓝准备用 256MB 的内存空间开一个数组，数组的每个元素都是 32 位二进制整数，如果不考虑程序占用的空间和维护内存需要的辅助空间，请问256MB 的空间可以存储多少个 32 位二进制整数？ 直接敲计算机 (25610241024)&#x2F;4 B、卡片【问题描述】">
+<meta property="og:description" content="115759. 找出所有子集的异或总和再求和一个数组的 异或总和 定义为数组中所有元素按位 XOR 的结果；如果数组为 空 ，则异或总和为 0 。例如，数组 [2,5,6] 的 异或总和 为 2 XOR 5 XOR 6 &#x3D; 1 。给你一个数组 nums ，请你求出 nums 中每个 子集 的 异或总和 ，计算并返回这些值相加之 和 。注意：在本题中，元素 相同 的不同子集应 多次 计数。数组 a">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-04-25T14:58:04.000Z">
-<meta property="article:modified_time" content="2021-05-19T04:19:40.564Z">
+<meta property="article:published_time" content="2021-05-19T04:17:42.000Z">
+<meta property="article:modified_time" content="2021-05-19T04:19:56.596Z">
 <meta property="article:author" content="Quan">
 <meta name="twitter:card" content="summary">
 
@@ -35,8 +35,6 @@
     
     
 <link rel="stylesheet" href="/texthow/css/style.css">
-<link rel="stylesheet" href="/texthow/%02.css">
-<link rel="stylesheet" href="/texthow/.css">
 
 <meta name="generator" content="Hexo 5.2.0"></head>
 
@@ -85,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/texthow/2021/04/25/学习记录9/" title="学习记录9" itemprop="url">学习记录9</a>
+      <a href="/texthow/2021/05/19/学习记录11/" title="学习记录11" itemprop="url">学习记录11</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
 		
   <p class="article-time">
-    <time datetime="2021-04-25T14:58:04.000Z" itemprop="datePublished"> Published 2021-04-25</time>
+    <time datetime="2021-05-19T04:17:42.000Z" itemprop="datePublished"> Published 2021-05-19</time>
     
   </p>
 </header>
@@ -105,147 +103,109 @@
 		
 		</div>
 		
-		<p>蓝桥杯<br>A、空间<br>小蓝准备用 256MB 的内存空间开一个数组，数组的每个元素都是 32 位<br>二进制整数，如果不考虑程序占用的空间和维护内存需要的辅助空间，请问<br>256MB 的空间可以存储多少个 32 位二进制整数？</p>
-<p>直接敲计算机 (256<em>1024</em>1024)/4</p>
-<p>B、卡片<br>【问题描述】</p>
-<a id="more"></a>
-<p>小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。例如，当小蓝有 30 张卡片，其中 0 到 9 各 3 张，则小蓝可以拼出 1 到 10，但是拼 11 时卡片 1 已经只有一张了，不够拼出 11。现在小蓝手里有 0 到 9 的卡片各 2021 张，共 20210 张，请问小蓝可以从 1拼到多少？<br>提示：建议使用计算机编程解决问题。<br>分析题目可知1是用的最多的数字，所以只需要计算1的个数即可，由于1900个1可拼到3000，所以设定从3000开始暴力循环推算即可。结果为3181<br>代码实现如下：</p>
+		<p>11<br>5759. 找出所有子集的异或总和再求和<br>一个数组的 异或总和 定义为数组中所有元素按位 XOR 的结果；如果数组为 空 ，则异或总和为 0 。<br>例如，数组 [2,5,6] 的 异或总和 为 2 XOR 5 XOR 6 = 1 。<br>给你一个数组 nums ，请你求出 nums 中每个 子集 的 异或总和 ，计算并返回这些值相加之 和 。<br>注意：在本题中，元素 相同 的不同子集应 多次 计数。<br>数组 a 是数组 b 的一个 子集 的前提条件是：从 b 删除几个（也可能不删除）元素能够得到 a 。</p>
+<p>示例 1：<br>输入：nums = [1,3]<br>输出：6<br>解释：[1,3] 共有 4 个子集：</p>
+<ul>
+<li>空子集的异或总和是 0 。</li>
+<li>[1] 的异或总和为 1 。</li>
+<li>[3] 的异或总和为 3 。</li>
+<li>[1,3] 的异或总和为 1 XOR 3 = 2 。<br>0 + 1 + 3 + 2 = 6<br>示例 2：<br>输入：nums = [5,1,6]<br>输出：28<br>解释：[5,1,6] 共有 8 个子集：</li>
+<li>空子集的异或总和是 0 。</li>
+<li>[5] 的异或总和为 5 。</li>
+<li>[1] 的异或总和为 1 。</li>
+<li>[6] 的异或总和为 6 。</li>
+<li>[5,1] 的异或总和为 5 XOR 1 = 4 。</li>
+<li>[5,6] 的异或总和为 5 XOR 6 = 3 。</li>
+<li>[1,6] 的异或总和为 1 XOR 6 = 7 。</li>
+<li>[5,1,6] 的异或总和为 5 XOR 1 XOR 6 = 2 。<br>0 + 5 + 1 + 6 + 4 + 3 + 7 + 2 = 28<br>示例 3：<br>输入：nums = [3,4,5,6,7,8]<br>输出：480<br>解释：每个子集的全部异或总和值之和为 480 。</li>
+</ul>
+<p>提示：<br>1 &lt;= nums.length &lt;= 12<br>1 &lt;= nums[i] &lt;= 20</p>
+<p>解题思路：<br>用dfs枚举出每一个子集的可能然后进行异或运算，计算出结果<br>（对dfs掌握还不够，想了好一会。。。）<br>AC代码如下：</p>
 <pre><code>
-#include<stdio.h>
-int main(void)
-&#123;
-    int i=1900;
-    int k=3000;
-    while(i<2021)
+class Solution &#123;
+    int sum=0;
+    public int subsetXORSum(int[] nums) &#123;
+        if(nums.length==1) 
+        return nums[0];
+        else dfs(nums,0,0);
+        return sum;
+    &#125;
+    public void dfs(int[] nums,int i,int j)
     &#123;
-        k++;
-        int a,b,c;
-        a=k%10;
-        b=(k%100)/10;
-        c=(k/100)%10;
-        if(a==1)
-        &#123;
-            i++;
-            if(i>=2021)
-            &#123;
-                printf("%d",k);
-                return 0;
-             &#125; 
+        if(i==nums.length)&#123;
+            sum+=j;
+            return;
         &#125;
-        if(b==1)
-        &#123;
-            i++;
-            if(i>=2021)
-            &#123;
-                printf("%d",k);
-                return 0;
-             &#125; 
+        else&#123;
+            dfs(nums,i+1,j^nums[i]);
+            dfs(nums,i+1,j);
         &#125;
-        if(c==1)
-        &#123;
-            i++;
-            if(i>=2021)
-            &#123;
-                printf("%d",k);
-                return 0;
-             &#125; 
-        &#125;
-    &#125;
-    return 0;
- &#125;
- </code></pre>
-
-<p>I、双向排序<br>【问题描述】<br>给定序列 (a1, a2, · · · , an) = (1, 2, · · · , n)，即 ai = i。小蓝将对这个序列进行 m 次操作，每次可能是将 a1, a2, · · · , aqi 降序排列，或者将 aqi , aqi+1, · · · , an 升序排列。请求出操作完成后的序列。<br>【输入格式】<br>输入的第一行包含两个整数 n, m，分别表示序列的长度和操作次数。接下来 m 行描述对序列的操作，其中第 i 行包含两个整数 pi, qi 表示操作类型和参数。当 pi = 0 时，表示将 a1, a2, · · · , aqi 降序排列；当 pi = 1 时，表示将 aqi , aqi+1, · · · , an 升序排列。<br>【输出格式】<br>输出一行，包含 n 个整数，相邻的整数之间使用一个空格分隔，表示操作完成后的序列。<br>【样例输入】<br>3 3<br>0 3<br>1 2<br>0 2<br>【样例输出】<br>3 1 2<br>【样例说明】<br>原数列为 (1, 2, 3)。 第 1 步后为 (3, 2, 1)。 第 2 步后为 (3, 1, 2)。 第 3 步后为 (3, 1, 2)。与第 2 步操作后相同，因为前两个数已经是降序了。【评测用例规模与约定】<br>对于 30% 的评测用例，n, m ≤ 1000；对于 60% 的评测用例，n, m ≤ 5000；对于所有评测用例，1 ≤ n, m ≤ 100000，0 ≤ ai ≤ 1，1 ≤ bi ≤ n。<br>目前只写了冒泡法排序的，所耗的时间较多，其他的排序还不熟练，会继续更进的。<br>代码如下：</p>
-<pre><code>
-#include<stdio.h>
-#include<malloc.h>
-void up(int a[],int low,int high)
-&#123;
-    int i,j,temp;
-    int s=0;
-    for(i=low;i<high-1;i++)
-    &#123;
-        for(j=i+1;j<high;j++)
-        &#123;
-            if(a[i]>a[j])
-            &#123;
-                temp=a[i];
-                a[i]=a[j];
-                a[j]=temp;
-                s=1;
-            &#125;
-         &#125;
-         if(s==0)
-         &#123;
-             break;
-         &#125;      
-    &#125;
-
-&#125;
-
-void down(int a[],int low,int high)
-&#123;
-    int i,j,temp;
-    int s=0;
-    for(i=low;i<high-1;i++)
-    &#123;
-        for(j=i+1;j<high;j++)
-        &#123;
-            if(a[i]<a[j])
-            &#123;
-                temp=a[i];
-                a[i]=a[j];
-                a[j]=temp;
-                s=1;
-            &#125;
-         &#125;
-         if(s==0)
-         &#123;
-             break;
-         &#125;
-
-    &#125;
-
-&#125;
-
-
-int main(void)
-&#123;
-    int n,m,p,q;
-    scanf("%d %d",&n,&m);
-    int i;
-    int *a=malloc(sizeof(int)*n);
-    for(i=0;i<n;i++)
-    &#123;
-        a[i]=i+1;
-    &#125;
-    while(m>0)
-    &#123;
-        scanf("%d %d",&p,&q);
-        if(p==0)
-        &#123;
-            down(a,0,q); 
-        &#125;
-        if(p==1)
-        &#123;
-            up(a,q-1,n);
-        &#125;
-                m--;
-    &#125;
-    for(i=0;i<n;i++)
-    &#123;
-        if(i!=n-1)
-        printf("%d ",a[i]);
-        else
-        printf("%d",a[i]);
-    &#125;
-    return 0;
+    &#125; 
 &#125;
  </code></pre>
 
-<p>G、砝码称重<br>【问题描述】<br>你有一架天平和 N 个砝码，这 N 个砝码重量依次是 W1, W2, · · · , WN。<br>请你计算一共可以称出多少种不同的重量？注意砝码可以放在天平两边。<br>【输入格式】<br>输入的第一行包含一个整数 N。<br>第二行包含 N 个整数：W1, W2, W3, · · · , WN。<br>【输出格式】<br>输出一个整数代表答案。<br>【样例输入】<br>3<br>1 4 6<br>【样例输出】<br>10<br>【样例说明】<br>能称出的 10 种重量是：1、2、3、4、5、6、7、9、10、11。<br>1 = 1；<br>2 = 6 − 4 (天平一边放 6，另一边放 4)；<br>3 = 4 − 1；<br>4 = 4；<br>5 = 6 − 1；<br>6 = 6；<br>7 = 1 + 6；<br>9 = 4 + 6 − 1；<br>10 = 4 + 6；<br>11 = 1 + 4 + 6。<br>【评测用例规模与约定】<br>对于 50% 的评测用例，1 ≤ N ≤ 15。<br>对于所有评测用例，1 ≤ N ≤ 100，N 个砝码总重不超过 100000。</p>
-<p>对于该题目前对这个动态规划算法还不熟悉，才看懂了CSDN上找的代码。-.-</p>
-  
+<p>看见题解的大佬提供了一种用二进制的方法进行枚举，没看懂-.-</p>
+<pre><code>
+class Solution &#123;
+public:
+    int subsetXORSum(vector<int>& nums) &#123;
+        int n = nums.size();
+        int ans = 0;
+        for (int i = 0; i < (1 << n); ++i) &#123;
+            int res = 0;
+            for (int j = 0; j < n; ++j) &#123;
+                if (i & (1 << j)) &#123;
+                    res = res ^ nums[j];
+                &#125;
+            &#125;
+            ans += res;
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+ </code></pre>
+
+<p>还有更厉害的大佬直接用数学解决了。（0.0）！！！</p>
+<pre><code>
+class Solution &#123;
+public:
+    int subsetXORSum(vector<int>& a) &#123;
+        int t=0; for (auto i:a)t|=i;
+        return t<<(a.size()-1);
+    &#125;
+&#125;;
+ </code></pre>
+
+<p>力扣1864<br>1864. 构成交替字符串需要的最小交换次数<br>难度中等4<br>给你一个二进制字符串 s ，现需要将其转化为一个 交替字符串 。请你计算并返回转化所需的 最小 字符交换次数，如果无法完成转化，返回 -1 。<br>交替字符串 是指：相邻字符之间不存在相等情况的字符串。例如，字符串 “010” 和 “1010” 属于交替字符串，但 “0100” 不是。<br>任意两个字符都可以进行交换，不必相邻 。</p>
+<p>示例 1：<br>输入：s = “111000”<br>输出：1<br>解释：交换位置 1 和 4：”111000” -&gt; “101010” ，字符串变为交替字符串。<br>示例 2：<br>输入：s = “010”<br>输出：0<br>解释：字符串已经是交替字符串了，不需要交换。<br>示例 3：<br>输入：s = “1110”<br>输出：-1</p>
+<p>提示：<br>•    1 &lt;= s.length &lt;= 1000<br>•    s[i] 的值为 ‘0’ 或 ‘1’</p>
+<p>解题思路：<br>先定义两个变量来记录当首字母是1或者0时候，后面的字符串要改变的总次数（1换成0和0换成1各记一次），循环一遍字符串，并记录0的个数，其中以1开头的记录偶数位置放1的所需的次数，以0开头的记录奇数位置置0所需的次数。<br>后面判断0的个数与1的个数相比较，0多则输出以0开头所需的次数/2，1多输出以1开头所需的次数/2，相等取次数小的输出。<br>其中对于关键的记录查看大佬的题解才知道可以使用if(check%2==i%2)。。。</p>
+<pre><code>
+class Solution &#123;
+    public int minSwaps(String s) &#123;
+        int s0=0;
+        int s1=0;
+        int number0=0;
+        for(int i=0;i<s.length();i++)
+        &#123;
+            char check=s.charAt(i);
+            if(check=='0')
+            number0++;
+            if(check%2==i%2) &#123;
+                s1++;
+            &#125;
+            else&#123;
+                s0++;
+            &#125;
+        &#125;
+        if(Math.abs(number0-(s.length()-number0))>1) return -1;
+        if(number0>(s.length()-number0)) return s0/2;
+        else if(number0<(s.length()-number0)) return s1/2;
+        else&#123;return Math.min(s1/2,s0/2);&#125;
+    &#125;
+
+&#125;
+ </code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -257,7 +217,7 @@ int main(void)
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://gitee.com/e18-16/texthow/2021/04/25/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%959/" data-title="学习记录9 | E18-16" data-tsina="" class="share clearfix">
+	  <div data-url="https://gitee.com/e18-16/texthow/2021/05/19/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%9511/" data-title="学习记录11 | E18-16" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -270,19 +230,11 @@ int main(void)
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/texthow/2021/05/10/学习记录10/" title="学习记录10">
-  <strong>上一篇：</strong><br/>
-  <span>
-  学习记录10</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/texthow/2020/12/27/学习记录8/"  title="学习记录8">
+<a href="/texthow/2021/05/10/学习记录10/"  title="学习记录10">
  <strong>下一篇：</strong><br/> 
- <span>学习记录8
+ <span>学习记录10
 </span>
 </a>
 </div>

@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="传智杯初赛题1：题目：解题思路：设置两个参数j、num，j用来记录已经报名了多少个学员到达m个时回到0，num记录费用，直接使用for循环以n为结束标志，当j与m相等时价格v+&#x3D;a。AC代码如下： #includeint main(void)&amp;#123;    int n,v,m,a;    while(scanf(&quot;%d %d %d %d&quot;,&amp;n,&amp;v,&amp;m,&amp;a)!&#x3D;EOF)    &amp;#123">
+    <meta name="description" content="传智杯初赛题1：题目：解题思路：设置两个参数j、num，j用来记录已经报名了多少个学员到达m个时回到0，num记录费用，直接使用for循环以n为结束标志，当j与m相等时价格v+&#x3D;a。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习记录8">
 <meta property="og:url" content="https://gitee.com/e18-16/texthow/2020/12/27/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%958/index.html">
 <meta property="og:site_name" content="E18-16">
-<meta property="og:description" content="传智杯初赛题1：题目：解题思路：设置两个参数j、num，j用来记录已经报名了多少个学员到达m个时回到0，num记录费用，直接使用for循环以n为结束标志，当j与m相等时价格v+&#x3D;a。AC代码如下： #includeint main(void)&amp;#123;    int n,v,m,a;    while(scanf(&quot;%d %d %d %d&quot;,&amp;n,&amp;v,&amp;m,&amp;a)!&#x3D;EOF)    &amp;#123">
+<meta property="og:description" content="传智杯初赛题1：题目：解题思路：设置两个参数j、num，j用来记录已经报名了多少个学员到达m个时回到0，num记录费用，直接使用for循环以n为结束标志，当j与m相等时价格v+&#x3D;a。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA1.png">
 <meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA2.png">
 <meta property="og:image" content="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA3.png">
 <meta property="article:published_time" content="2020-12-27T12:28:06.000Z">
-<meta property="article:modified_time" content="2020-12-27T12:40:49.806Z">
+<meta property="article:modified_time" content="2021-05-19T04:19:31.384Z">
 <meta property="article:author" content="Quan">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA1.png">
@@ -109,7 +109,9 @@
 		
 		</div>
 		
-		<p>传智杯初赛题1：<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA1.png" alt="传智题1"><br>解题思路：设置两个参数j、num，j用来记录已经报名了多少个学员到达m个时回到0，num记录费用，直接使用for循环以n为结束标志，当j与m相等时价格v+=a。<br>AC代码如下：<br> <pre><code><br>#include<stdio.h><br>int main(void)<br>&#123;<br>    int n,v,m,a;<br>    while(scanf("%d %d %d %d",&n,&v,&m,&a)!=EOF)<br>    &#123;<br>        int i,j=0,num=0;<br>        for(i=0;i<n;i++)<br>        &#123;<br>            if(j==m)<br>            &#123;<br>                v+=a;<br>                j=0;<br>            &#125;<br>            num+=v;<br>            j++;<br>        &#125;<br>        printf("%d\n",num);<br>     &#125;<br>    return 0;<br> &#125;<br> </code></pre></p>
+		<p>传智杯初赛题1：<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA1.png" alt="传智题1"><br>解题思路：设置两个参数j、num，j用来记录已经报名了多少个学员到达m个时回到0，num记录费用，直接使用for循环以n为结束标志，当j与m相等时价格v+=a。</p>
+<a id="more"></a>
+<p>AC代码如下：<br> <pre><code><br>#include<stdio.h><br>int main(void)<br>&#123;<br>    int n,v,m,a;<br>    while(scanf("%d %d %d %d",&n,&v,&m,&a)!=EOF)<br>    &#123;<br>        int i,j=0,num=0;<br>        for(i=0;i<n;i++)<br>        &#123;<br>            if(j==m)<br>            &#123;<br>                v+=a;<br>                j=0;<br>            &#125;<br>            num+=v;<br>            j++;<br>        &#125;<br>        printf("%d\n",num);<br>     &#125;<br>    return 0;<br> &#125;<br> </code></pre></p>
 <p>传智杯初赛题2<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA2.png" alt="传智题2"><br>解题思路：<br>直接使用if语句判断即可，分为三种情况，首先是成绩大于等于90的输出4.0，然后时60到89的，输出4.0-(90-成绩)*0.1即可，最后是小于60分的，由于根据题目要求开根后乘以10，这种情况不存在大于等90分的，直接判断开根后乘以10是否大于等于60即可。</p>
 <p>AC代码如下：<br> <pre><code><br>#include<stdio.h><br>#include<math.h><br>int main(void)<br>&#123;<br>    int n;<br>    while(scanf("%d",&n)!=EOF)<br>    &#123;<br>        int num=0;<br>        if(n>=90)<br>        &#123;<br>            printf("4.0\n");<br>            continue;<br>        &#125;<br>        if(n>=60&&n<=89)<br>        &#123;<br>            printf("%.1f\n",4.0-(90-n)*0.1);<br>        &#125;<br>        if(n<60)<br>        &#123;<br>            num=(int)(sqrt(n)*10);                    //强制转化为int型直接去掉小数点后的数<br>            if(num>=60)                                  //实现题目要求的向下取整<br>            printf("%.1f\n",4.0-(90-num)*0.1);<br>            else printf("0.0\n");<br>        &#125;<br>    &#125;<br>    return 0;<br> &#125;<br> </code></pre></p>
 <p>传智杯初赛题3（未完成这个及后面的题0.0）<br>题目：<img src="http://e18-16.gitee.io/myimg/img/%E4%BC%A0%E6%99%BA3.png" alt="传智题3"><br>解题思路：<br>设置链表存放志愿者的编号，时间，难度系数，然后按照题目要求改写sort()函数排序规则</p>
