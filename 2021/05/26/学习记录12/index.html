@@ -1,0 +1,727 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>学习记录12 | E18-16</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Quan">
+    
+
+    
+    <meta name="description" content="哪种连续子字符串更长难度简单1给你一个二进制字符串 s 。如果字符串中由 1 组成的 最长 连续子字符串 严格长于 由 0 组成的 最长 连续子字符串，返回 true ；否则，返回 false 。•    例如，s &#x3D; “110100010” 中，由 1 组成的最长连续子字符串的长度是 2 ，由 0 组成的最长连续子字符串的长度是 3 。注意，如果字符串中不存在 0 ，此时认为由 0 组成的最长">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习记录12">
+<meta property="og:url" content="https://gitee.com/e18-16/texthow/2021/05/26/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%9512/index.html">
+<meta property="og:site_name" content="E18-16">
+<meta property="og:description" content="哪种连续子字符串更长难度简单1给你一个二进制字符串 s 。如果字符串中由 1 组成的 最长 连续子字符串 严格长于 由 0 组成的 最长 连续子字符串，返回 true ；否则，返回 false 。•    例如，s &#x3D; “110100010” 中，由 1 组成的最长连续子字符串的长度是 2 ，由 0 组成的最长连续子字符串的长度是 3 。注意，如果字符串中不存在 0 ，此时认为由 0 组成的最长">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-26T08:58:47.000Z">
+<meta property="article:modified_time" content="2021-05-26T09:01:55.547Z">
+<meta property="article:author" content="Quan">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="alternative" href="/atom.xml" title="E18-16" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/texthow/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/texthow/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/texthow/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/texthow/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/texthow/"><img src="/texthow/img/logo.png" alt="E18-16" title="E18-16"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/texthow/" title="E18-16">E18-16</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/texthow/">Home</a></li>
+					
+						<li><a href="/texthow/archives">Archives</a></li>
+					
+						<li><a href="/texthow/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:gitee.com/e18-16/texthow">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/texthow/2021/05/26/学习记录12/" title="学习记录12" itemprop="url">学习记录12</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
+		
+  <p class="article-time">
+    <time datetime="2021-05-26T08:58:47.000Z" itemprop="datePublished"> Published 2021-05-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
+		<ol start="5763">
+<li>哪种连续子字符串更长<br>难度简单1<br>给你一个二进制字符串 s 。如果字符串中由 1 组成的 最长 连续子字符串 严格长于 由 0 组成的 最长 连续子字符串，返回 true ；否则，返回 false 。<br>•    例如，s = “110100010” 中，由 1 组成的最长连续子字符串的长度是 2 ，由 0 组成的最长连续子字符串的长度是 3 。<br>注意，如果字符串中不存在 0 ，此时认为由 0 组成的最长连续子字符串的长度是 0 。字符串中不存在 1 的情况也适用此规则。</li>
+</ol>
+<p>示例 1：<br>输入：s = “1101”<br>输出：true<br>解释：<br>由 1 组成的最长连续子字符串的长度是 2：”1101”<br>由 0 组成的最长连续子字符串的长度是 1：”1101”<br>由 1 组成的子字符串更长，故返回 true 。<br>示例 2：<br>输入：s = “111000”<br>输出：false<br>解释：<br>由 1 组成的最长连续子字符串的长度是 3：”111000”<br>由 0 组成的最长连续子字符串的长度是 3：”111000”<br>由 1 组成的子字符串不比由 0 组成的子字符串长，故返回 false 。<br>示例 3：<br>输入：s = “110100010”<br>输出：false<br>解释：<br>由 1 组成的最长连续子字符串的长度是 2：”110100010”<br>由 0 组成的最长连续子字符串的长度是 3：”110100010”<br>由 1 组成的子字符串不比由 0 组成的子字符串长，故返回 false 。</p>
+<p>提示：<br>•    1 &lt;= s.length &lt;= 100<br>•    s[i] 不是 ‘0’ 就是 ‘1’<br>解题思路：<br>先设定两个变量a、b来记录为1和为0的最大长度，另设一个变量t记录连续字符串的长度，然后循环一遍，记录就可以了。<br>AC双百代码：</p>
+<pre><code>
+class Solution &#123;
+    public boolean checkZeroOnes(String s) &#123;
+       int a=0;
+        int b=0;
+        int t=0;
+        for(int i=0;i<s.length();i++)
+        &#123;
+            if(i==0)
+            t++; 
+            if(i>0&&s.charAt(i)==s.charAt(i-1))
+            &#123;
+                t++;
+            &#125;
+            else if(i>0)&#123;
+                t=1;
+            &#125;
+            if(s.charAt(i)=='0')
+            &#123;
+                a=Math.max(a, t);
+            &#125;
+            else &#123;
+                b=Math.max(b, t);
+            &#125;
+        &#125;
+    if(b>a) return true;
+        else return false;
+    &#125;
+&#125;
+ </code></pre>
+
+<ol start="1870">
+<li>准时到达的列车最小时速<br>难度中等9<br>给你一个浮点数 hour ，表示你到达办公室可用的总通勤时间。要到达办公室，你必须按给定次序乘坐 n 趟列车。另给你一个长度为 n 的整数数组 dist ，其中 dist[i] 表示第 i 趟列车的行驶距离（单位是千米）。<br>每趟列车均只能在整点发车，所以你可能需要在两趟列车之间等待一段时间。<br>•    例如，第 1 趟列车需要 1.5 小时，那你必须再等待 0.5 小时，搭乘在第 2 小时发车的第 2 趟列车。<br>返回能满足你准时到达办公室所要求全部列车的 最小正整数 时速（单位：千米每小时），如果无法准时到达，则返回 -1 。<br>生成的测试用例保证答案不超过 107 ，且 hour 的 小数点后最多存在两位数字 。</li>
+</ol>
+<p>示例 1：<br>输入：dist = [1,3,2], hour = 6<br>输出：1<br>解释：速度为 1 时：</p>
+<ul>
+<li>第 1 趟列车运行需要 1/1 = 1 小时。</li>
+<li>由于是在整数时间到达，可以立即换乘在第 1 小时发车的列车。第 2 趟列车运行需要 3/1 = 3 小时。</li>
+<li>由于是在整数时间到达，可以立即换乘在第 4 小时发车的列车。第 3 趟列车运行需要 2/1 = 2 小时。</li>
+<li>你将会恰好在第 6 小时到达。<br>示例 2：<br>输入：dist = [1,3,2], hour = 2.7<br>输出：3<br>解释：速度为 3 时：</li>
+<li>第 1 趟列车运行需要 1/3 = 0.33333 小时。</li>
+<li>由于不是在整数时间到达，故需要等待至第 1 小时才能搭乘列车。第 2 趟列车运行需要 3/3 = 1 小时。</li>
+<li>由于是在整数时间到达，可以立即换乘在第 2 小时发车的列车。第 3 趟列车运行需要 2/3 = 0.66667 小时。</li>
+<li>你将会在第 2.66667 小时到达。<br>示例 3：<br>输入：dist = [1,3,2], hour = 1.9<br>输出：-1<br>解释：不可能准时到达，因为第 3 趟列车最早是在第 2 小时发车。</li>
+</ul>
+<p>提示：<br>•    n == dist.length<br>•    1 &lt;= n &lt;= 105<br>•    1 &lt;= dist[i] &lt;= 105<br>•    1 &lt;= hour &lt;= 109<br>•    hours 中，小数点后最多存在两位数字</p>
+<p>解题思路：本题不会，直接看题解<br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-speed-to-arrive-on-time/solution/zhun-shi-dao-da-de-lie-che-zui-xiao-shi-tl9df/">https://leetcode-cn.com/problems/minimum-speed-to-arrive-on-time/solution/zhun-shi-dao-da-de-lie-che-zui-xiao-shi-tl9df/</a><br> 在题解下的评论看了个轻松理解的代码：<br> <pre><code><br>class Solution &#123;<br>    public int minSpeedOnTime(int[] dist, double hour) &#123;<br>        int i = 1;//最小速度<br>        int j = Arrays.stream(dist).max().getAsInt()*100;//最大速度<br>        while(i <= j)&#123;<br>            int m = i + (j-i)/2;<br>            if(costtime(m, dist) > hour)&#123;i = m+1;&#125;<br>            else&#123;j = m-1;&#125;<br>        &#125;<br>        return i > Arrays.stream(dist).max().getAsInt()*100 ? -1:i;<br>    &#125;</p>
+<pre><code>public double costtime(double speed, int[] dist)&#123;
+    int len = dist.length;
+    double result = 0;
+    for(int i = 0; i &lt; len-1; i++)&#123;
+        result += Math.ceil(dist[i]/speed);
+    &#125;
+    return result + dist[len-1]/speed;
+&#125;</code></pre>
+<p>}<br> </code></pre><br>这周花了点时间写了操作系统FIFO算法和LRU的代码-.-<br>感觉还挺有趣的。</p>
+<pre><code>
+#include<iostream>
+#include<time.h>
+#include<algorithm> 
+#include<stdlib.h> 
+<a id="more"></a>
+using namespace std;
+const int MaxNum=320;//指令数
+const int M=5;//内存容量
+int PageOrder[MaxNum];//页面请求
+int Simulate[MaxNum][M];//页面访问过程
+int PageCount[M],LackNum;//PageCount用来记录LRU算法中最久未使用时间,LackNum记录缺页数
+float PageRate;//命中率
+int PageCount1[32];
+
+bool IsExit(int i)//FIFO算法中判断新的页面请求是否在内存中
+&#123; bool f=false;
+for(int j=0;j<M;j++)
+&#123; if(Simulate[i-1][j]==PageOrder[i])//在前一次页面请求过程中寻找是否存在新的页面请求
+&#123; f=true; &#125;
+&#125;
+return f;
+&#125;
+
+
+int IsExitLRU(int i)//LRU算法中判断新的页面请求是否在内存中
+&#123; int f=-1;
+for(int j=0;j<M;j++)
+&#123;if(Simulate[i-1][j]==PageOrder[i]) &#123; f=j; &#125;
+&#125;
+return f;
+&#125;
+
+
+int Compare()&#123; //LRU算法找出内存中需要置换出来的页面  
+int p,q;
+p=PageCount[0];
+q=0;
+for(int i=1;i<M;i++) &#123;
+if(p<PageCount[i]) &#123;
+p=PageCount[i];
+q=i;
+&#125;
+&#125;
+return q;
+&#125;
+
+
+void Init() //初始化页框
+&#123; for(int k=0;k<MaxNum;k++) &#123;
+int n=rand()%320; //随机数产生320次指令
+PageOrder[k]=n/10; //根据指令产生320次页面请求
+&#125;
+for(int i=0;i<MaxNum;i++) //初始化页面访问过程
+&#123; for(int j=0;j<M;j++)
+ &#123; Simulate[i][j]=-1; &#125; 
+&#125;
+for(int q=0;q<M;q++)//初始化最久未使用数组
+&#123;PageCount[q]=0; &#125;
+&#125;
+
+void OutPut()//输出
+&#123; int i,j;
+cout<<"页面访问序列:"<<endl;
+for(j=0;j<MaxNum;j++)
+&#123;cout<<PageOrder[j]<<" ";&#125;
+cout<<endl;
+cout<<"页面访问过程(只显示前10个):"<<endl;
+for(i=0;i<10;i++)
+&#123; for(j=0;j<M;j++)
+&#123; if(Simulate[i][j]==-1)
+cout<<" ";
+else cout<<Simulate[i][j]<<" ";
+&#125;
+cout<<endl;
+&#125;
+cout<<"缺页数= "<<LackNum<<endl;
+cout<<"命中率= "<<PageRate<<endl;
+cout<<"--------------------------------------------------------------"<<endl; 
+&#125;
+
+        void FIFO()//FIFO算法
+        &#123; 
+        int j,x=0,y=0;
+        int sss=0;
+        LackNum=0;   
+        Init();
+        for(j=0;sss<5;j++)//将前五个页面请求直接放入内存中
+        &#123; 
+        int cord=IsExitLRU(j);
+        if(cord==-1&&j>0)&#123;
+            for(int k=0;k<=(j-y)%M;k++)
+            &#123;
+            if((j-y)%M==k) Simulate[j][k]=PageOrder[j];
+            else  Simulate[j][k]=Simulate[j-1][k];
+            &#125;
+            sss++;&#125;
+        else &#123;
+            if(j==0) &#123;
+            Simulate[j][0]=PageOrder[j];
+            sss++;
+            &#125;
+            else&#123;
+                int temp=Simulate[j-1][cord];
+            int sk=cord;
+            for(;sk<5;sk++)
+            &#123;
+                if(Simulate[j-1][sk+1]!=-1)
+                 Simulate[j][sk]=Simulate[j-1][sk+1];
+                 else break;
+            &#125;
+            Simulate[j][sk]=temp;
+            LackNum++;
+            y++;
+            &#125;
+            &#125;                
+        &#125;
+        y=0;
+        for(x=j;x<MaxNum;x++)
+        &#123;    
+        for(int t=0;t<M;t++)//先将前一次页面访问过程赋值给新的页面访问过程
+        &#123;    Simulate[x][t]=Simulate[x-1][t];&#125;
+            if(!IsExit(x))//根据新访问页面是否存在内存中来更新页面访问过程
+            &#123;
+            LackNum++;
+            Simulate[x][y%M]=PageOrder[x];
+            y++;
+            &#125;
+        &#125;
+         PageRate=1-((float)LackNum/(float)MaxNum);//算出命中率
+        OutPut();
+        &#125;
+
+void LRU()&#123;
+    cout<<"LRU算法"<<endl;
+    int j,x=0,y=2;
+    int s=0;
+    for(int i=0;i<M;i++)
+    PageCount[i]=0;
+    LackNum=0;   
+    Init();
+    int sss=0;    //先将不同的五个页面放入内存中 
+    for(j=0;sss<5;j++)
+    &#123;
+        int cord=IsExitLRU(j);
+        if(cord==-1&&j>0)&#123;
+        for(int k=0;k<=(j-s)%M;k++)
+        &#123;
+            if((j-s)%M==k) &#123;
+                Simulate[j][k]=PageOrder[j];
+                PageCount[k]=*min_element(PageCount,PageCount+M)-1;
+            &#125;
+            else &#123;
+                Simulate[j][k]=Simulate[j-1][k];
+            &#125; 
+        &#125;
+        sss++;
+        &#125;
+        else &#123;
+            if(j==0)&#123;
+            Simulate[0][0]=PageOrder[0];
+            PageCount[0]=0;
+            sss++;
+            &#125;    
+        else&#123;
+            for(int i=0;i<5;i++)
+            &#123;
+                Simulate[j][i]=Simulate[j-1][i];
+            &#125;
+        PageCount[cord]=*min_element(PageCount,PageCount+M)-1;    //使当前相等的页面对应的时间为最小的    
+        LackNum++;
+        s++;    
+        &#125;    
+        &#125;
+    &#125;
+
+    for(x=j;x<MaxNum;x++)
+    &#123;
+        for(int t=0;t<M;t++)//先将前一次页面访问过程赋值给新的页面访问过程
+        &#123;    Simulate[x][t]=Simulate[x-1][t];&#125;
+        int cord=IsExitLRU(x);
+        if(cord!=-1)
+            &#123;
+            PageCount[cord]=*min_element(PageCount,PageCount+M)-1;
+            &#125;
+        else&#123;
+            LackNum++;           //cord不为1，既有新页面进入内存，缺页数加1 
+            int temp=Compare();
+            PageCount[temp]=*min_element(PageCount,PageCount+M)-1;
+            Simulate[x][temp]=PageOrder[x];
+        &#125;
+
+    &#125;    
+    PageRate=1-((float)LackNum/(float)MaxNum);//算出命中率
+    OutPut();
+&#125;
+void YourChoice(int choice)&#123; //最近不常用调度算法(LRU)
+switch(choice)
+&#123; case 1: 
+    cout<<"-------------------"<<endl;
+    cout<<"FIFO算法结果如下："<<endl;
+    FIFO();
+    break;
+case 2: 
+    cout<<"---------------------"<<endl;
+    cout<<"LRU算法结果如下："<<endl;
+    LRU();
+    break;
+case 3:
+break;
+default:
+cout<<"重新选择算法：1--FIFO 2--LRU 3--退出 "<<endl;
+cin>>choice;
+YourChoice(choice);
+&#125;
+
+&#125;
+int main(void)
+&#123; int choice,i=1;
+while(i)
+&#123;     cout<<"请选择算法：1--FIFO 2--LRU 3--退出 "<<endl;
+    cin>>choice;
+    if(choice==3)
+    &#123;i=0; &#125;
+    else &#123; YourChoice(choice);&#125;
+&#125;
+return 0;
+&#125;
+ </code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://gitee.com/e18-16/texthow/2021/05/26/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%9512/" data-title="学习记录12 | E18-16" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/texthow/2021/05/19/学习记录11/"  title="学习记录11">
+ <strong>下一篇：</strong><br/> 
+ <span>学习记录11
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m learning how to use code. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/texthow/about" target="_blank" title="Quan">Quan</a>
+		
+		
+		</p>
+
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=467590816&auto=1&height=66"></iframe>
+</div>
+</footer>
+    <script src="/texthow/js/jquery-2.0.3.min.js"></script>
+<script src="/texthow/js/jquery.imagesloaded.min.js"></script>
+<script src="/texthow/js/gallery.js"></script>
+<script src="/texthow/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/texthow/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/texthow/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/texthow/img/scrollup.png"/></a>
+	</div>
+	<script src="/texthow/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

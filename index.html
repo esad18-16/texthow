@@ -83,6 +83,122 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/texthow/2021/05/26/学习记录12/" title="学习记录12" itemprop="url">学习记录12</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
+		
+  <p class="article-time">
+    <time datetime="2021-05-26T08:58:47.000Z" itemprop="datePublished"> Published 2021-05-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ol start="5763">
+<li>哪种连续子字符串更长<br>难度简单1<br>给你一个二进制字符串 s 。如果字符串中由 1 组成的 最长 连续子字符串 严格长于 由 0 组成的 最长 连续子字符串，返回 true ；否则，返回 false 。<br>•    例如，s = “110100010” 中，由 1 组成的最长连续子字符串的长度是 2 ，由 0 组成的最长连续子字符串的长度是 3 。<br>注意，如果字符串中不存在 0 ，此时认为由 0 组成的最长连续子字符串的长度是 0 。字符串中不存在 1 的情况也适用此规则。</li>
+</ol>
+<p>示例 1：<br>输入：s = “1101”<br>输出：true<br>解释：<br>由 1 组成的最长连续子字符串的长度是 2：”1101”<br>由 0 组成的最长连续子字符串的长度是 1：”1101”<br>由 1 组成的子字符串更长，故返回 true 。<br>示例 2：<br>输入：s = “111000”<br>输出：false<br>解释：<br>由 1 组成的最长连续子字符串的长度是 3：”111000”<br>由 0 组成的最长连续子字符串的长度是 3：”111000”<br>由 1 组成的子字符串不比由 0 组成的子字符串长，故返回 false 。<br>示例 3：<br>输入：s = “110100010”<br>输出：false<br>解释：<br>由 1 组成的最长连续子字符串的长度是 2：”110100010”<br>由 0 组成的最长连续子字符串的长度是 3：”110100010”<br>由 1 组成的子字符串不比由 0 组成的子字符串长，故返回 false 。</p>
+<p>提示：<br>•    1 &lt;= s.length &lt;= 100<br>•    s[i] 不是 ‘0’ 就是 ‘1’<br>解题思路：<br>先设定两个变量a、b来记录为1和为0的最大长度，另设一个变量t记录连续字符串的长度，然后循环一遍，记录就可以了。<br>AC双百代码：</p>
+<pre><code>
+class Solution &#123;
+    public boolean checkZeroOnes(String s) &#123;
+       int a=0;
+        int b=0;
+        int t=0;
+        for(int i=0;i<s.length();i++)
+        &#123;
+            if(i==0)
+            t++; 
+            if(i>0&&s.charAt(i)==s.charAt(i-1))
+            &#123;
+                t++;
+            &#125;
+            else if(i>0)&#123;
+                t=1;
+            &#125;
+            if(s.charAt(i)=='0')
+            &#123;
+                a=Math.max(a, t);
+            &#125;
+            else &#123;
+                b=Math.max(b, t);
+            &#125;
+        &#125;
+    if(b>a) return true;
+        else return false;
+    &#125;
+&#125;
+ </code></pre>
+
+<ol start="1870">
+<li>准时到达的列车最小时速<br>难度中等9<br>给你一个浮点数 hour ，表示你到达办公室可用的总通勤时间。要到达办公室，你必须按给定次序乘坐 n 趟列车。另给你一个长度为 n 的整数数组 dist ，其中 dist[i] 表示第 i 趟列车的行驶距离（单位是千米）。<br>每趟列车均只能在整点发车，所以你可能需要在两趟列车之间等待一段时间。<br>•    例如，第 1 趟列车需要 1.5 小时，那你必须再等待 0.5 小时，搭乘在第 2 小时发车的第 2 趟列车。<br>返回能满足你准时到达办公室所要求全部列车的 最小正整数 时速（单位：千米每小时），如果无法准时到达，则返回 -1 。<br>生成的测试用例保证答案不超过 107 ，且 hour 的 小数点后最多存在两位数字 。</li>
+</ol>
+<p>示例 1：<br>输入：dist = [1,3,2], hour = 6<br>输出：1<br>解释：速度为 1 时：</p>
+<ul>
+<li>第 1 趟列车运行需要 1/1 = 1 小时。</li>
+<li>由于是在整数时间到达，可以立即换乘在第 1 小时发车的列车。第 2 趟列车运行需要 3/1 = 3 小时。</li>
+<li>由于是在整数时间到达，可以立即换乘在第 4 小时发车的列车。第 3 趟列车运行需要 2/1 = 2 小时。</li>
+<li>你将会恰好在第 6 小时到达。<br>示例 2：<br>输入：dist = [1,3,2], hour = 2.7<br>输出：3<br>解释：速度为 3 时：</li>
+<li>第 1 趟列车运行需要 1/3 = 0.33333 小时。</li>
+<li>由于不是在整数时间到达，故需要等待至第 1 小时才能搭乘列车。第 2 趟列车运行需要 3/3 = 1 小时。</li>
+<li>由于是在整数时间到达，可以立即换乘在第 2 小时发车的列车。第 3 趟列车运行需要 2/3 = 0.66667 小时。</li>
+<li>你将会在第 2.66667 小时到达。<br>示例 3：<br>输入：dist = [1,3,2], hour = 1.9<br>输出：-1<br>解释：不可能准时到达，因为第 3 趟列车最早是在第 2 小时发车。</li>
+</ul>
+<p>提示：<br>•    n == dist.length<br>•    1 &lt;= n &lt;= 105<br>•    1 &lt;= dist[i] &lt;= 105<br>•    1 &lt;= hour &lt;= 109<br>•    hours 中，小数点后最多存在两位数字</p>
+<p>解题思路：本题不会，直接看题解<br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-speed-to-arrive-on-time/solution/zhun-shi-dao-da-de-lie-che-zui-xiao-shi-tl9df/">https://leetcode-cn.com/problems/minimum-speed-to-arrive-on-time/solution/zhun-shi-dao-da-de-lie-che-zui-xiao-shi-tl9df/</a><br> 在题解下的评论看了个轻松理解的代码：<br> <pre><code><br>class Solution &#123;<br>    public int minSpeedOnTime(int[] dist, double hour) &#123;<br>        int i = 1;//最小速度<br>        int j = Arrays.stream(dist).max().getAsInt()*100;//最大速度<br>        while(i <= j)&#123;<br>            int m = i + (j-i)/2;<br>            if(costtime(m, dist) > hour)&#123;i = m+1;&#125;<br>            else&#123;j = m-1;&#125;<br>        &#125;<br>        return i > Arrays.stream(dist).max().getAsInt()*100 ? -1:i;<br>    &#125;</p>
+<pre><code>public double costtime(double speed, int[] dist)&#123;
+    int len = dist.length;
+    double result = 0;
+    for(int i = 0; i &lt; len-1; i++)&#123;
+        result += Math.ceil(dist[i]/speed);
+    &#125;
+    return result + dist[len-1]/speed;
+&#125;</code></pre>
+<p>}<br> </code></pre><br>这周花了点时间写了操作系统FIFO算法和LRU的代码-.-<br>感觉还挺有趣的。</p>
+<pre><code>
+#include<iostream>
+#include<time.h>
+#include<algorithm> 
+#include<stdlib.h>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/texthow/2021/05/26/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%9512/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/texthow/2021/05/19/学习记录11/" title="学习记录11" itemprop="url">学习记录11</a>
   </h1>
   <p class="article-author">By
@@ -113,95 +229,11 @@
 <li>[5,1,6] 的异或总和为 5 XOR 1 XOR 6 = 2 。<br>0 + 5 + 1 + 6 + 4 + 3 + 7 + 2 = 28<br>示例 3：<br>输入：nums = [3,4,5,6,7,8]<br>输出：480<br>解释：每个子集的全部异或总和值之和为 480 。</li>
 </ul>
 <p>提示：<br>1 &lt;= nums.length &lt;= 12<br>1 &lt;= nums[i] &lt;= 20</p>
-<p>解题思路：<br>用dfs枚举出每一个子集的可能然后进行异或运算，计算出结果<br>（对dfs掌握还不够，想了好一会。。。）<br>AC代码如下：</p>
-<pre><code>
-class Solution &#123;
-    int sum=0;
-    public int subsetXORSum(int[] nums) &#123;
-        if(nums.length==1) 
-        return nums[0];
-        else dfs(nums,0,0);
-        return sum;
-    &#125;
-    public void dfs(int[] nums,int i,int j)
-    &#123;
-        if(i==nums.length)&#123;
-            sum+=j;
-            return;
-        &#125;
-        else&#123;
-            dfs(nums,i+1,j^nums[i]);
-            dfs(nums,i+1,j);
-        &#125;
-    &#125; 
-&#125;
- </code></pre>
-
-<p>看见题解的大佬提供了一种用二进制的方法进行枚举，没看懂-.-</p>
-<pre><code>
-class Solution &#123;
-public:
-    int subsetXORSum(vector<int>& nums) &#123;
-        int n = nums.size();
-        int ans = 0;
-        for (int i = 0; i < (1 << n); ++i) &#123;
-            int res = 0;
-            for (int j = 0; j < n; ++j) &#123;
-                if (i & (1 << j)) &#123;
-                    res = res ^ nums[j];
-                &#125;
-            &#125;
-            ans += res;
-        &#125;
-        return ans;
-    &#125;
-&#125;;
- </code></pre>
-
-<p>还有更厉害的大佬直接用数学解决了。（0.0）！！！</p>
-<pre><code>
-class Solution &#123;
-public:
-    int subsetXORSum(vector<int>& a) &#123;
-        int t=0; for (auto i:a)t|=i;
-        return t<<(a.size()-1);
-    &#125;
-&#125;;
- </code></pre>
-
-<p>力扣1864<br>1864. 构成交替字符串需要的最小交换次数<br>难度中等4<br>给你一个二进制字符串 s ，现需要将其转化为一个 交替字符串 。请你计算并返回转化所需的 最小 字符交换次数，如果无法完成转化，返回 -1 。<br>交替字符串 是指：相邻字符之间不存在相等情况的字符串。例如，字符串 “010” 和 “1010” 属于交替字符串，但 “0100” 不是。<br>任意两个字符都可以进行交换，不必相邻 。</p>
-<p>示例 1：<br>输入：s = “111000”<br>输出：1<br>解释：交换位置 1 和 4：”111000” -&gt; “101010” ，字符串变为交替字符串。<br>示例 2：<br>输入：s = “010”<br>输出：0<br>解释：字符串已经是交替字符串了，不需要交换。<br>示例 3：<br>输入：s = “1110”<br>输出：-1</p>
-<p>提示：<br>•    1 &lt;= s.length &lt;= 1000<br>•    s[i] 的值为 ‘0’ 或 ‘1’</p>
-<p>解题思路：<br>先定义两个变量来记录当首字母是1或者0时候，后面的字符串要改变的总次数（1换成0和0换成1各记一次），循环一遍字符串，并记录0的个数，其中以1开头的记录偶数位置放1的所需的次数，以0开头的记录奇数位置置0所需的次数。<br>后面判断0的个数与1的个数相比较，0多则输出以0开头所需的次数/2，1多输出以1开头所需的次数/2，相等取次数小的输出。<br>其中对于关键的记录查看大佬的题解才知道可以使用if(check%2==i%2)。。。</p>
-<pre><code>
-class Solution &#123;
-    public int minSwaps(String s) &#123;
-        int s0=0;
-        int s1=0;
-        int number0=0;
-        for(int i=0;i<s.length();i++)
-        &#123;
-            char check=s.charAt(i);
-            if(check=='0')
-            number0++;
-            if(check%2==i%2) &#123;
-                s1++;
-            &#125;
-            else&#123;
-                s0++;
-            &#125;
-        &#125;
-        if(Math.abs(number0-(s.length()-number0))>1) return -1;
-        if(number0>(s.length()-number0)) return s0/2;
-        else if(number0<(s.length()-number0)) return s1/2;
-        else&#123;return Math.min(s1/2,s0/2);&#125;
-    &#125;
-
-&#125;
- </code></pre>
         
         
         <p class="article-more-link">
+          
+            <a href="/texthow/2021/05/19/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%9511/#more">Read More</a>
           
        </p>
     </div>
@@ -643,58 +675,6 @@ class Solution &#123;
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/texthow/2020/11/15/学习记录2/" title="学习记录2" itemprop="url">学习记录2</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/texthow/about" title="Quan" target="_blank" itemprop="author">Quan</a>
-		
-  <p class="article-time">
-    <time datetime="2020-11-15T09:49:44.000Z" itemprop="datePublished"> Published 2020-11-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>位、字节、字（bits, Bytes, words）是计算机数据存储的单位。位是最小的存储单位，每一个位存储一个1位的二进制码，一个字节由8位组成。而字通常为16、32或64个位组成。</p>
-<p>Java：<br>类型     byte    short    char    int    float    long    double<br>所占字节  1           2       2      4      4      8        8</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/texthow/2020/11/15/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/texthow/page/2/">2</a><a class="extend next" rel="next" href="/texthow/page/2/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
@@ -778,6 +758,12 @@ class Solution &#123;
 		
 		
 		</p>
+
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=467590816&auto=1&height=66"></iframe>
 </div>
 </footer>
     <script src="/texthow/js/jquery-2.0.3.min.js"></script>
